@@ -1,6 +1,12 @@
 # Alright 제품·기술 청사진
 
+> Current behavior: version 0.5.0 creates PSD/AI at screen pixel dimensions and ends with Finder filename editing. See [Document creation](DocumentCreation.md).
+
 작성일: 2026-09-20 · 상태: 구현 전 설계 · 플랫폼: macOS
+
+2026-09-24 현황: [Hello World 호스트](HelloWorld.md)를 구현하였다. 이 문서의 Finder 기능·시장·배포 항목은 원래의 설계이며 기능 구현 완료를 뜻하지 않는다.
+
+2026-09-25 현황: [Finder New Text](FinderNewText.md)를 구현하여 등록 폴더의 빈 공간 메뉴에서 빈 TXT 생성·기본 편집기 열기를 실증하였다. 이번 기능의 메뉴 이름은 사용자 요구에 따라 최상위 `New Text`이다. 아래 다기능 Alright 하위 메뉴는 후속 설계이다.
 
 ## 1. 제품 정의
 
@@ -134,6 +140,10 @@ App Groups는 설정·작업 요청 공유 수단이지 임의 파일 접근 권
 
 ## 6. 구현 구조
 
+0.4.0 구현 갱신: 실제 Finder 메뉴를 Alright 그룹으로 묶고 10종 문서 생성과 Adobe PSD·AI를 지원한다. 구현과 템플릿 계약은 [문서 생성](DocumentCreation.md)에 따른다.
+
+2026-09-25 결정: macOS 전용 제품으로 확정하고 호스트·확장·파일 작업을 Swift 6으로 전환했다. 기존 C++23/Objective-C++ 결정은 대체한다. 아이콘은 SF Symbols이다. 현재 구현은 New Text 수직 경로이며 아래 복사·이동·저널은 후속 설계이다.
+
 ```mermaid
 flowchart TD
     Finder[macOS Finder] --> Extension[Finder Sync 확장\n메뉴와 대상 수집]
@@ -141,18 +151,18 @@ flowchart TD
     Config --> Extension
     Extension --> Request[작업 요청과 접근 권한 전달\n전달 방식은 G0에서 확정]
     Request --> Executor[앱 측 실행부\n진행 상태와 작업 내역]
-    Executor --> Core[C++23 핵심 로직\n조건 판정과 작업 계획]
-    Executor --> Platform[Objective-C++ macOS 어댑터\n파일 접근과 시스템 연동]
+    Executor --> Core[Swift 핵심 로직\n조건 판정과 작업 계획]
+    Executor --> Platform[Swift macOS 연동\n파일 접근과 시스템 연동]
     Platform --> Files[사용자가 선택한 파일과 폴더]
     Executor --> Journal[로컬 작업 기록과 복구 정보]
 ```
 
-의존성 방향은 `macOS 어댑터 → 핵심 인터페이스`이다. 핵심 로직은 Finder·AppKit·Qt·설정 화면을 참조하지 않는다. C++23의 값 타입과 `std::expected`로 요청·결과·오류를 표현한다. 화면과 실제 파일 I/O를 분리하되 아직 필요하지 않은 추상 팩토리나 범용 플러그인 계층을 만들지 않는다.
+의존성 방향은 `macOS 어댑터 → 핵심 인터페이스`이다. 핵심 파일 생성부는 Finder·AppKit·설정 화면을 참조하지 않는다. Swift 값 타입·Codable로 요청과 설정을 표현하고 `throws`로 오류를 전달한다. 화면과 실제 파일 I/O를 분리하되 아직 필요하지 않은 추상 팩토리나 범용 플러그인 계층을 만들지 않는다.
 
 | 구성 | 책임 | 기술 결정 |
 | --- | --- | --- |
-| 앱 핵심 | 메뉴 조건, 이름 규칙, 충돌 정책, 작업 계획 | C++23. 프로젝트 내부 모듈로 시작 |
-| Finder 확장 | 빠른 메뉴 생성, 입력 스냅샷, 실행 요청 | Objective-C++와 FinderSync/AppKit |
+| 앱 핵심 | 메뉴 조건, 이름 규칙, 충돌 정책, 작업 계획 | Swift 6·Foundation·Darwin. 프로젝트 내부에서 책임 분리 |
+| Finder 확장 | 빠른 메뉴 생성, 입력 스냅샷, 실행 요청 | Swift 6과 FinderSync/AppKit |
 | macOS 어댑터 | 북마크, pasteboard, 파일 메타데이터, 앱 열기 | Foundation/AppKit 및 필요한 공개 OS API |
 | 앱 실행부 | 장시간 작업, 취소, 부분 실패, 내역 | 앱 수명과 함께 관리. 별도 상주 데몬은 필요성 입증 후 판단 |
 | 설정 UI | 메뉴·목적지·템플릿·진단 | AppKit 네이티브. QML을 채택하지 않음 |
@@ -176,7 +186,7 @@ SDK 재사용을 위해 기존 클라이언트의 공개 API를 깨뜨리지 않
 
 ## 7. 파일 작업 계약
 
-파일 작업은 범용 `std::filesystem::copy` 하나로 완결하지 않는다. macOS 확장 속성·리소스 포크·권한·파일 조정 등 필요한 보존 조건은 플랫폼 어댑터에서 다루고 실제 결과로 검증한다.
+파일 작업은 범용 파일 복사 호출 하나로 완결하지 않는다. macOS 확장 속성·리소스 포크·권한·파일 조정 등 필요한 보존 조건은 플랫폼 어댑터에서 다루고 실제 결과로 검증한다.
 
 | 상황 | 제품 계약 |
 | --- | --- |

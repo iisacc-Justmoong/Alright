@@ -1,0 +1,3 @@
+enum BuildConfiguration {
+    static let appGroup = "@ALRIGHT_APP_GROUP@"
+}

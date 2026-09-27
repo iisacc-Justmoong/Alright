@@ -1,6 +1,16 @@
 # Alright 실행·검증 계획
 
+> Current behavior: version 0.5.0 creates PSD/AI at screen pixel dimensions and ends with Finder filename editing. See [Document creation](DocumentCreation.md).
+
+2026-09-25 0.4.0 갱신: Alright 하위 메뉴에서 TXT·MD·RTF·PDF·JSON·CSV·HTML·SVG·PSD·AI 생성을 구현했다. 실제 Photoshop·Illustrator 열기와 6개 테스트 결과는 [문서 생성](DocumentCreation.md)에 기록한다. 복사·이동·출시 관문은 계속 후속 계획이다.
+
 상태: 2026-09-20 작성. 아래 항목은 수행 계획이며 완료된 테스트 결과가 아니다.
+
+2026-09-24 갱신: 실행 가능한 Hello World AppKit 호스트와 CMake/CTest 구성을 추가했다. 현재 구현·검증 범위는 [Hello World 기록](HelloWorld.md)에 있으며, 아래 Finder 확장 G0와 기능 인수 기준은 여전히 후속 계획이다.
+
+2026-09-25 갱신: [Finder New Text](FinderNewText.md)에서 실제 빈 공간 메뉴 → 0바이트 TXT 생성 → 기본 편집기 열기, 호스트 종료 상태에서 자동 실행, 충돌 시 기존 파일 보존을 확인했다. 아래 G0의 핵심 수직 경로는 구현했지만, 권한 철회·Finder 재시작·다양한 저장소를 포함한 전체 관문과 A01–A15를 모두 통과한 것은 아니다.
+
+2026-09-25 Swift 전환: macOS 전용 제품이며 호스트·Finder 확장·파일 생성·기능 테스트는 Swift 6이다. 앱 아이콘과 UI·메뉴에는 SF Symbols를 사용한다. 전환 후 실제 실행 검증은 [Finder New Text](FinderNewText.md)에 기록한다.
 
 ## 1. 첫 작업: 기술 실증 G0
 
@@ -31,14 +41,14 @@
 
 ## 3. 구현 파일 구조 초안
 
-다음은 향후 구현 시의 구조이다. 현재 생성된 소스 트리가 아니다.
+다음은 현재 구현 구조이다. New Text와 폴더 접근·요청 전달은 구현했으며 복사·이동·템플릿은 후속 범위이다.
 
 ```text
 Alright/
   CMakeLists.txt
   src/
-    core/               # C++23 규칙·요청·결과·작업 계획
-    platform/macos/     # Objective-C++ 파일·권한·앱 연동
+    core/               # Swift 파일 생성·경로 검증
+    shared/             # Swift 권한 북마크·요청·SF Symbols
     app/                # AppKit 설정과 실행부
     finder_extension/   # Finder 메뉴와 요청 전달
   resources/            # 번들 정보·entitlements·번역·템플릿
@@ -47,15 +57,15 @@ Alright/
   build/                # 모든 빌드·테스트 임시 파일·패키지
 ```
 
-빌드 표준은 C++23과 CMake/CTest이다. 앱·확장 번들 빌드에 필요한 Xcode 구성이 있다면 CMake 생성기 또는 문서화한 보조 경로로 관리하되 산출물은 `build/` 아래에 둔다. 실제 CMake를 추가한 후 다음 경로를 제공한다.
+빌드 표준은 Swift 6과 CMake/Ninja/CTest이다. 모든 산출물은 `build/` 아래에 둔다.
 
 ```sh
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON
 cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-위 명령은 현재 실행 가능한 빌드 지침이 아니다. 현 단계에는 CMakeLists.txt가 없다. SDK 추출이 생기면 해당 SDK도 자체 `build/`에서 빌드·테스트·설치 소비자 검증을 수행한다. 소스 변경에는 관련 문서와 테스트 갱신이 함께 따른다.
+위 명령은 현재 Swift 호스트·Finder 확장·회귀 테스트에 실행 가능하다. 앱은 `open build/bin/Alright.app`으로 실행한다. SDK 추출이 생기면 해당 SDK도 자체 `build/`에서 빌드·테스트·설치 소비자 검증을 수행한다. 소스 변경에는 관련 문서와 테스트 갱신이 함께 따른다.
 
 ## 4. 인수 테스트
 
@@ -98,7 +108,7 @@ A14는 다른 볼륨 이동을 활성화할 때의 필수 관문이다. 복수 �
 
 ## 6. 배포와 운영
 
-기존 인증 자격으로 가능한 경우 Developer ID 서명 → 공증 → 티켓 부착 → Gatekeeper 평가 → 개발 경로에 의존하지 않는 실제 앱 실행 → Finder 메뉴 호출까지 검증한다. 서명 검사 성공만으로 출시 완료라 하지 않는다. 현재 실행한 배포 작업은 없다.
+기존 인증 자격으로 가능한 경우 Developer ID 서명 → 공증 → 티켓 부착 → Gatekeeper 평가 → 개발 경로에 의존하지 않는 실제 앱 실행 → Finder 메뉴 호출까지 검증한다. 서명 검사 성공만으로 출시 완료라 하지 않는다. 현재 로컬 Developer ID 서명과 Finder 확장 등록·실행까지 검증했으며 공개 배포용 공증·패키지는 후속이다.
 
 업데이트 검증에서는 기존 앱·설정·템플릿을 보존한다. 설정 스키마 이행 전 복구 가능한 사본을 유지하고, 확장과 앱 버전 불일치를 검출한다. 제거 방법은 확장 비활성화와 앱 제거를 설명하며 사용자 파일·템플릿 삭제를 기본으로 하지 않는다.
 
@@ -108,7 +118,7 @@ A14는 다른 볼륨 이동을 활성화할 때의 필수 관문이다. 복수 �
 
 | 결정 | 이유 | 다시 판단할 조건 |
 | --- | --- | --- |
-| 네이티브 AppKit + C++23 | 작은 macOS 제품에 맞고 Qt 의존 방지 | 실제 공통 UI 재사용 요구 발생 |
+| 네이티브 Swift 6 + AppKit | macOS 전용 제품과 시스템 확장에 집중 | 실제 공통 구현 재사용 요구 발생 |
 | Finder Sync 우선 실증 | 빈 공간 문맥 메뉴가 핵심 가치 | 노출·권한·배포 적합성 문제 확인 |
 | 로컬 기능부터 | 파일 유실 위험과 지원 비용 통제 | 클라우드·네트워크 요청 및 검증 환경 확보 |
 | 앱 내부 모듈부터 | 미래 재사용을 추측한 SDK 증가 방지 | 두 제품에서 동일한 변경 요구가 반복됨 |
