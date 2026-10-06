@@ -1,4 +1,6 @@
-# Finder New Text
+<a id="finder-new-text"></a>
+
+# 찾기 새 텍스트
 
 이 문서는 0.3.0까지의 TXT·Swift 전환 기록이다. 0.4.0부터 메뉴는 `Alright` 하위 메뉴로 묶이고 10종 문서를 지원한다. 현재 구현은 [문서 생성](DocumentCreation.md)을 참조한다.
 
@@ -57,9 +59,9 @@ README의 CMake 빌드 후 `cmake --build build --target AlrightRegisterExtensio
 | --- | --- |
 | AppLifecycle | 설정 창, 닫기·재열기, 위치·크기 보존, 표준 종료 메뉴, SF Symbols 로드 |
 | NewText | 0바이트 TXT, 기존 내용 보존, 이름 충돌, 특수 문자, 경로 이탈·심볼릭 링크 거부, 동시 16건 생성 |
-| Requests | 이전 저장 형식 호환, 등록 경로 경계, 가장 구체적인 폴더 선택, 일회성 요청, 중복·위조 URL·만료·철회된 등록 거부 |
+|요청| 이전 저장 형식 호환, 등록 경로 경계, 가장 구체적인 폴더 선택, 일회성 요청, 중복·위조 URL·만료·철회된 등록 거부 |
 | FinderMenu | 빈 공간 문맥, 등록 밖·불명확한 대상 거부, Finder 메뉴 재구성 이후 tag로 원래 위치 유지, 중복 클릭 거부 |
-| Bundle | 앱 하나, ICNS 해상도, 확장 메타데이터, 시스템 런타임만 참조, 양쪽 서명·Sandbox·동일 App Group, Swift 심볼·macOS 최소 버전 |
+|Bundle| 앱 하나, ICNS 해상도, 확장 메타데이터, 시스템 런타임만 참조, 양쪽 서명·Sandbox·동일 App Group, Swift 심볼·macOS 최소 버전 |
 
 아래는 Swift 전환 이전 실제 검증 기록이며 당시 폴더는 `build/fixtures/finder-new-text/`이다.
 

@@ -6,22 +6,22 @@
 
 | 메뉴 | 형식 | 초기 문서 |
 | --- | --- | --- |
-| New Text | `.txt` | 0바이트 |
-| New Markdown | `.md` | 0바이트 |
-| New Rich Text | `.rtf` | 빈 서식 문서 |
-| New PDF | `.pdf` | A4 세로 빈 페이지 1개 |
-| New Word Document | `.docx` | A4 세로 빈 본문 |
-| New Excel Workbook | `.xlsx` | 빈 Sheet1, A1 선택 |
-| New PowerPoint Presentation | `.pptx` | 16:9 빈 슬라이드 1개 |
-| New OpenDocument Text | `.odt` | A4 세로 빈 본문 |
-| New OpenDocument Spreadsheet | `.ods` | 빈 Sheet1 |
-| New OpenDocument Presentation | `.odp` | 16:9 빈 슬라이드 1개 |
-| New JSON | `.json` | 빈 객체 `{}`와 개행 |
-| New CSV | `.csv` | 빈 CSV, 0바이트 |
-| New HTML | `.html` | UTF-8·viewport 메타데이터와 빈 body |
-| New SVG | `.svg` | 1920×1080 빈 SVG 캔버스 |
-| New Photoshop Document | `.psd` | 우클릭한 화면 크기, RGB 8비트, 72ppi, 투명 Layer 1 |
-| New Illustrator Document | `.ai` | 우클릭한 화면 크기, RGB, 아트보드 1개, 빈 Layer 1 |
+|새 텍스트| `.txt` | 0바이트 |
+|새로운 마크다운| `.md` | 0바이트 |
+|새 서식 있는 텍스트| `.rtf` | 빈 서식 문서 |
+|신규 PDF| `.pdf` | A4 세로 빈 페이지 1개 |
+|새 Word 문서| `.docx` | A4 세로 빈 본문 |
+|새 Excel 통합 문서| `.xlsx` | 빈 Sheet1, A1 선택 |
+|신규 PowerPoint 프레젠테이션| `.pptx` | 16:9 빈 슬라이드 1개 |
+|신규 OpenDocument 텍스트| `.odt` | A4 세로 빈 본문 |
+|신규 OpenDocument 스프레드시트| `.ods` | 빈 Sheet1 |
+|신규 OpenDocument 프레젠테이션| `.odp` | 16:9 빈 슬라이드 1개 |
+|신규 JSON| `.json` | 빈 객체 `{}`와 개행 |
+|신규 CSV| `.csv` | 빈 CSV, 0바이트 |
+|신규 HTML| `.html` | UTF-8·뷰포트 메타데이터와 빈 body |
+|신규 SVG| `.svg` | 1920×1080 빈 SVG 캔버스 |
+|New Photoshop Document| `.psd` | 우클릭한 화면 크기, RGB 8비트, 72ppi, 투명 Layer 1 |
+|New Illustrator Document| `.ai` | 우클릭한 화면 크기, RGB, 아트보드 1개, 빈 Layer 1 |
 
 ## 메뉴 아이콘
 

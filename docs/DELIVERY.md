@@ -1,6 +1,6 @@
 # Alright 실행·검증 계획
 
-> Current behavior: version 0.5.0 creates PSD/AI at screen pixel dimensions and ends with Finder filename editing. See [Document creation](DocumentCreation.md).
+> 현재 동작: 버전 0.5.0는 화면 픽셀 크기로 PSD/AI를 생성하고 Finder 파일 이름 편집으로 끝납니다. [문서 생성](DocumentCreation.md)를 참조하세요.
 
 2026-09-25 0.4.0 갱신: Alright 하위 메뉴에서 TXT·MD·RTF·PDF·JSON·CSV·HTML·SVG·PSD·AI 생성을 구현했다. 실제 Photoshop·Illustrator 열기와 6개 테스트 결과는 [문서 생성](DocumentCreation.md)에 기록한다. 복사·이동·출시 관문은 계속 후속 계획이다.
 
@@ -100,8 +100,8 @@ A14는 다른 볼륨 이동을 활성화할 때의 필수 관문이다. 복수 �
 | 사용자가 고른 로컬 APFS 폴더 | 첫 지원 대상 | 생성·복사·이동·메타데이터·되돌리기 |
 | 바탕화면·문서 | 조건부 | 보호 폴더 권한, iCloud 설정 차이 |
 | 외장 APFS·exFAT | 후속 | 해제·재연결, 파일명 규칙, 메타데이터 차이 |
-| iCloud Drive | 후속 | 메뉴 노출, 내려받지 않은 파일, 파일 조정 |
-| OneDrive·Dropbox | 후속 | 확장 공존, 공급자 권한·가용성 |
+|iCloud 드라이브| 후속 | 메뉴 노출, 내려받지 않은 파일, 파일 조정 |
+|OneDrive·Dropbox| 후속 | 확장 공존, 공급자 권한·가용성 |
 | SMB | 후속 | 끊김·지연·원자성·서버 파일명 제약 |
 
 메뉴 생성 지연 목표는 로컬 테스트 폴더에서 p95 50ms 이하이다. 큰 파일 복사는 별도로 측정하며 이 수치에 포함하지 않는다. 확장 메뉴를 여는 동안 네트워크·디렉터리 재귀 탐색·파일 내용 해시를 수행하지 않는다. 유휴 상태에서는 주기적 폴링을 하지 않는다. 성능 목표는 아직 측정값이 아니며 장비·OS·선택 파일 수를 기록해 비교한다.

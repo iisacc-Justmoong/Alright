@@ -7,9 +7,9 @@
 | DOCX | 빈 문단, A4 세로, 2.54cm 여백 | WordprocessingML 문서·스타일 |
 | XLSX | Sheet1 1개, 데이터 없음, A1 선택 | SpreadsheetML 통합 문서·워크시트·기본 스타일 |
 | PPTX | 16:9 빈 슬라이드 1개 | PresentationML 슬라이드·마스터·빈 레이아웃·테마 |
-| ODT | 빈 문단, A4 세로, 2.54cm 여백 | OpenDocument 1.3 text |
-| ODS | 빈 Sheet1 1개 | OpenDocument 1.3 spreadsheet |
-| ODP | 16:9 빈 슬라이드 1개 | OpenDocument 1.3 presentation |
+| ODT | 빈 문단, A4 세로, 2.54cm 여백 |OpenDocument 1.3 text|
+| ODS | 빈 Sheet1 1개 |OpenDocument 1.3 스프레드시트|
+| ODP | 16:9 빈 슬라이드 1개 |OpenDocument 1.3 프레젠테이션|
 
 ## 유지보수
 
