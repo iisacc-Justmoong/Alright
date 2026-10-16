@@ -1,29 +1,49 @@
 import AppKit
 
-// Generate every standard ICNS representation directly from the system symbol.
+// Generate standard ICNS representations from the Illustrator-exported master.
 @main struct GenerateIcon {
     @MainActor static func main() throws {
-        let directory = URL(fileURLWithPath: CommandLine.arguments[1])
+        guard CommandLine.arguments.count == 3 else {
+            throw NSError(domain: "Alright.Icon", code: 1, userInfo: [NSLocalizedDescriptionKey: "Usage: AlrightIconGenerator <1024px master.png> <output.iconset>"])
+        }
+        let source = URL(fileURLWithPath: CommandLine.arguments[1])
+        let directory = URL(fileURLWithPath: CommandLine.arguments[2])
+        let masterData = try Data(contentsOf: source)
+        guard let master = NSBitmapImageRep(data: masterData),
+              master.pixelsWide == 1024, master.pixelsHigh == 1024,
+              let image = master.cgImage else {
+            throw NSError(domain: "Alright.Icon", code: 2, userInfo: [NSLocalizedDescriptionKey: "The app icon master must be a readable 1024 × 1024 PNG"])
+        }
+        if master.hasAlpha {
+            for y in 0..<1024 {
+                for x in 0..<1024 where master.colorAt(x: x, y: y)?.alphaComponent != 1 {
+                    throw NSError(domain: "Alright.Icon", code: 3, userInfo: [NSLocalizedDescriptionKey: "The app icon must fill the complete square with opaque artwork"])
+                }
+            }
+        }
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         for size in [16, 32, 128, 256, 512] {
             for scale in [1, 2] {
                 let pixels = size * scale
-                let side = CGFloat(pixels)
-                let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: pixels, pixelsHigh: pixels, bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0)!
-                NSGraphicsContext.saveGraphicsState()
-                NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
-                let background = NSBezierPath(roundedRect: NSRect(x: side * 0.06, y: side * 0.06, width: side * 0.88, height: side * 0.88), xRadius: side * 0.20, yRadius: side * 0.20)
-                NSGradient(starting: NSColor(srgbRed: 0.18, green: 0.49, blue: 0.98, alpha: 1), ending: NSColor(srgbRed: 0.16, green: 0.24, blue: 0.78, alpha: 1))!.draw(in: background, angle: -90)
-                let config = NSImage.SymbolConfiguration(pointSize: side * 0.53, weight: .medium).applying(.init(paletteColors: [.white]))
-                guard let symbol = NSImage(systemSymbolName: "doc.badge.plus", accessibilityDescription: "Alright")?.withSymbolConfiguration(config) else {
-                    throw NSError(domain: "Alright.Icon", code: 1, userInfo: [NSLocalizedDescriptionKey: "Required SF Symbol is unavailable"])
-                }
-                let ratio = min(side * 0.56 / symbol.size.width, side * 0.60 / symbol.size.height)
-                let target = NSSize(width: symbol.size.width * ratio, height: symbol.size.height * ratio)
-                symbol.draw(in: NSRect(x: (side - target.width) / 2, y: (side - target.height) / 2, width: target.width, height: target.height))
-                NSGraphicsContext.restoreGraphicsState()
                 let suffix = scale == 2 ? "@2x" : ""
-                try rep.representation(using: .png, properties: [:])!.write(to: directory.appendingPathComponent("icon_\(size)x\(size)\(suffix).png"))
+                let output = directory.appendingPathComponent("icon_\(size)x\(size)\(suffix).png")
+                if pixels == 1024 {
+                    try masterData.write(to: output)
+                    continue
+                }
+                guard let context = CGContext(data: nil, width: pixels, height: pixels,
+                                              bitsPerComponent: 8, bytesPerRow: pixels * 4,
+                                              space: CGColorSpace(name: CGColorSpace.sRGB)!,
+                                              bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
+                    throw NSError(domain: "Alright.Icon", code: 4, userInfo: [NSLocalizedDescriptionKey: "Unable to create the app icon bitmap"])
+                }
+                context.interpolationQuality = .high
+                context.draw(image, in: CGRect(x: 0, y: 0, width: pixels, height: pixels))
+                guard let resized = context.makeImage(),
+                      let png = NSBitmapImageRep(cgImage: resized).representation(using: .png, properties: [:]) else {
+                    throw NSError(domain: "Alright.Icon", code: 5, userInfo: [NSLocalizedDescriptionKey: "Unable to encode the app icon PNG"])
+                }
+                try png.write(to: output)
             }
         }
     }

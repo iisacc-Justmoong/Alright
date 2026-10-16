@@ -1,4 +1,5 @@
-# Swift emits dSYM beside the executable. Keep debugging data outside signed bundles.
+# Swift emits dSYM and link dependency files beside the executable. Keep these
+# build artifacts outside signed bundles.
 if(EXISTS "${SOURCE}")
     get_filename_component(parent "${DESTINATION}" DIRECTORY)
     file(MAKE_DIRECTORY "${parent}")

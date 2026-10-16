@@ -7,8 +7,9 @@
     <key>CFBundleDisplayName</key><string>Alright — New Documents</string>
     <key>CFBundlePackageType</key><string>XPC!</string>
     <key>CFBundleShortVersionString</key><string>@PROJECT_VERSION@</string>
-    <key>CFBundleVersion</key><string>7</string>
+    <key>CFBundleVersion</key><string>9</string>
     <key>LSMinimumSystemVersion</key><string>@CMAKE_OSX_DEPLOYMENT_TARGET@</string>
+    <key>LSUIElement</key><true/>
     <key>NSExtension</key><dict>
         <key>NSExtensionAttributes</key><dict/>
         <key>NSExtensionPointIdentifier</key><string>com.apple.FinderSync</string>

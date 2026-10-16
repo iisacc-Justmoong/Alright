@@ -246,6 +246,21 @@ func rejects(_ message: String, _ body: () throws -> Void) throws {
         delegate.applicationDidFinishLaunching(Notification(name: NSApplication.didFinishLaunchingNotification))
         let window = delegate.window!
         try check(window.title == "Alright" && window.isVisible, "visible native host")
+        func descendants(_ view: NSView) -> [NSView] {
+            [view] + view.subviews.flatMap { descendants($0) }
+        }
+        let views = descendants(window.contentView!)
+        let filenameButtons = views.compactMap { $0 as? NSButton }.filter { $0.title == "Enable Filename Editing…" }
+        let text = views.compactMap { $0 as? NSTextField }.map(\.stringValue)
+        if BuildConfiguration.appStore {
+            try check(filenameButtons.isEmpty, "App Store setup does not request Accessibility")
+            let expectedStatus = FIFinderSyncController.isExtensionEnabled ? "Finder extension is enabled" : "Enable Alright in Finder Extension Settings"
+            try check(text.contains(expectedStatus), "App Store readiness depends only on the Finder extension")
+            try check(!text.contains { $0.contains("Enable Filename Editing") }, "App Store status has no Accessibility gate")
+            try check(text.contains { $0.contains("press Return") }, "App Store explains manual Finder naming")
+        } else {
+            try check(filenameButtons.count == 1, "direct distribution retains automatic filename editing setup")
+        }
         try check(!delegate.applicationShouldTerminateAfterLastWindowClosed(app), "last window lifetime")
         window.setContentSize(NSSize(width: 680, height: 500))
         let frame = window.frame

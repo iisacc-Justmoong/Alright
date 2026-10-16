@@ -28,7 +28,7 @@ final class FolderStore {
         guard let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: BuildConfiguration.appGroup) else {
             throw AlrightError(message: "Shared storage is unavailable. Check app signing and the App Group.")
         }
-        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        try IisaccFileProvider.createDirectory(at: directory, withIntermediateDirectories: true)
         return FolderStore(directory: directory)
     }
     private var configurationURL: URL { directory.appendingPathComponent("folders.plist") }
@@ -39,7 +39,7 @@ final class FolderStore {
     func save(_ folders: [GrantedFolder]) throws {
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .binary
-        try encoder.encode(folders).write(to: configurationURL, options: .atomic)
+        try IisaccFileProvider.write(encoder.encode(folders), to: configurationURL, options: .atomic)
         DistributedNotificationCenter.default().postNotificationName(Self.changed, object: nil, userInfo: nil, deliverImmediately: true)
     }
     func add(_ url: URL) throws {
@@ -65,7 +65,7 @@ final class FolderStore {
         let request = DocumentRequest(id: UUID().uuidString, folderID: folderID, path: path, created: Date(), version: 3, kind: kind, canvas: canvas)
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .binary
-        try encoder.encode(request).write(to: file(request.id, suffix: "request"), options: .withoutOverwriting)
+        try IisaccFileProvider.write(encoder.encode(request), to: file(request.id, suffix: "request"), options: .withoutOverwriting)
         return URL(string: "alright://create-document/" + request.id)!
     }
     private func file(_ id: String, suffix: String) -> URL { directory.appendingPathComponent(id + "." + suffix) }

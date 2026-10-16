@@ -1,3 +1,4 @@
 enum BuildConfiguration {
     static let appGroup = "@ALRIGHT_APP_GROUP@"
+    static let appStore = @ALRIGHT_APP_STORE_SWIFT@
 }

@@ -58,7 +58,9 @@ import FinderSync
             let title = NSTextField(labelWithString: "New Document")
             title.font = .systemFont(ofSize: 32, weight: .bold)
             title.setAccessibilityIdentifier("new-document-title")
-            let description = NSTextField(wrappingLabelWithString: "Create a document, type its name in Finder, and you’re done.")
+            let description = NSTextField(wrappingLabelWithString: BuildConfiguration.appStore ?
+                "Create a document, then press Return in Finder to type its name." :
+                "Create a document, type its name in Finder, and you’re done.")
             description.alignment = .center
             description.textColor = .secondaryLabelColor
             description.widthAnchor.constraint(equalToConstant: 490).isActive = true
@@ -74,10 +76,13 @@ import FinderSync
             resultLabel.alignment = .center
             resultLabel.textColor = .secondaryLabelColor
             resultLabel.widthAnchor.constraint(equalToConstant: 490).isActive = true
-            let stack = NSStackView(views: [icon, title, description, statusLabel,
-                button("Finder Extension Settings…", symbol: Symbols.settings, action: #selector(manageExtension(_:))),
-                button("Enable Filename Editing…", symbol: "pencil", action: #selector(enableFilenameEditing(_:))),
-                folderPicker, actions, resultLabel])
+            var controls: [NSView] = [icon, title, description, statusLabel,
+                button("Finder Extension Settings…", symbol: Symbols.settings, action: #selector(manageExtension(_:)))]
+            if !BuildConfiguration.appStore {
+                controls.append(button("Enable Filename Editing…", symbol: "pencil", action: #selector(enableFilenameEditing(_:))))
+            }
+            controls += [folderPicker, actions, resultLabel]
+            let stack = NSStackView(views: controls)
             stack.orientation = .vertical
             stack.alignment = .centerX
             stack.spacing = 16
@@ -106,11 +111,19 @@ import FinderSync
             if folder.id == selected { folderPicker.select(folderPicker.lastItem) }
         }
         if folderPicker.numberOfItems == 0 { folderPicker.addItem(withTitle: "No folders added") }
-        statusLabel.stringValue = store == nil ? "Shared storage unavailable — check app signing" :
-            (FIFinderSyncController.isExtensionEnabled ? (FinderRenamer.isEnabled ? "Finder extension and filename editing are enabled" : "Enable Filename Editing to finish setup") : "Enable Alright in Finder Extension Settings")
+        if store == nil {
+            statusLabel.stringValue = "Shared storage unavailable — check app signing"
+        } else if !FIFinderSyncController.isExtensionEnabled {
+            statusLabel.stringValue = "Enable Alright in Finder Extension Settings"
+        } else if BuildConfiguration.appStore {
+            statusLabel.stringValue = "Finder extension is enabled"
+        } else {
+            statusLabel.stringValue = FinderRenamer.isEnabled ? "Finder extension and filename editing are enabled" : "Enable Filename Editing to finish setup"
+        }
     }
     func applicationDidBecomeActive(_ notification: Notification) { refreshStatus() }
     @objc private func enableFilenameEditing(_ sender: Any?) {
+        guard !BuildConfiguration.appStore else { return }
         FinderRenamer.requestAccess()
         NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
     }
@@ -158,13 +171,18 @@ import FinderSync
             await previous?.value
             for url in urls {
                 do {
-                    guard FinderRenamer.isEnabled else {
+                    if !BuildConfiguration.appStore && !FinderRenamer.isEnabled {
                         FinderRenamer.requestAccess()
                         throw AlrightError(message: "Enable Filename Editing in macOS Settings, then choose a document from Finder again.")
                     }
                     let file = try DocumentService(store: store).create(requestURL: url)
-                    try await FinderRenamer().begin(file)
-                    self?.resultLabel.stringValue = "Created \(file.lastPathComponent)"
+                    if BuildConfiguration.appStore {
+                        NSWorkspace.shared.activateFileViewerSelecting([file])
+                        self?.resultLabel.stringValue = "Created \(file.lastPathComponent). Press Return in Finder to rename."
+                    } else {
+                        try await FinderRenamer().begin(file)
+                        self?.resultLabel.stringValue = "Created \(file.lastPathComponent)"
+                    }
                 } catch { self?.showError(error) }
             }
         }
