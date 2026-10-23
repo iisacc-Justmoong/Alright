@@ -1,0 +1,10 @@
+{
+  "locale": "en-US",
+  "name": "Alright - New File",
+  "subtitle": "",
+  "promotional_text": "",
+  "description": "Create new files right where you work in Finder.\n\nAdd a folder in Alright, enable its Finder extension, then right-click empty space in that folder and choose Alright and a document type. Your new file appears in Finder, ready to rename with Return.\n\nChoose from 16 formats:\nTXT, Markdown, RTF, PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), OpenDocument Text (ODT), Spreadsheet (ODS), Presentation (ODP), JSON, CSV, HTML, SVG, Photoshop (PSD), and Illustrator (AI).\n\nCreate a quick note, start a document, or prepare a blank design file without opening an editor first. Alright keeps existing files and adds a number when a name is already in use.\n\nYou choose the folders Alright can use. No account is required.\n\nRequires macOS 14 or later and an Apple silicon Mac.",
+  "keywords": "finder,new file,create file,document,text,markdown,office,pdf,svg,photoshop,illustrator",
+  "support_url": "https://www.iisacc.com/BuisnessInfo/Support",
+  "marketing_url": ""
+}

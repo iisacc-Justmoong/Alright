@@ -1,6 +1,6 @@
 # Mac App Store 패키지
 
-> 현재 제출(2026-10-15 23:54 UTC): `0.6.1 (9)`, `build/appstore/Alright-0.6.1-9-macOS-AppStore.pkg`. 업로드·서버 처리·App Review 제출 완료, 상태 **Waiting for Review**. 미국 기준 USD 0.99와 기존 판매·출시 설정을 유지한다. 상세 상태는 `build/verification/icon-submission-20261015/status.md`와 `deployment-results.json`을 따른다. 아래 빌드 7·8의 dist/ 기록은 과거 이력이다.
+> 최종 상태 확인(2026-10-23, Asia/Seoul): ASC 실화면에서 스토어 이름 **Alright - New File**, 기존 빌드 `0.6.1 (9)`, 제출과 항목 모두 **Waiting for Review**를 다시 확인했다. 재제출 시각은 **2026-10-21 06:13 Asia/Seoul**이다. 2026-10-20 심사의 5.2.5 반려 사유는 앱 이름의 `Finder` 표현이었다. 현재 제출 메타데이터는 `resources/Appstore/metadata-en-US.json`, 최초 수정·재제출 기록은 `build/verification/review-metadata-20261021/result.json`, 최신 확인 기록은 `build/verification/review-metadata-20261023/result.json`을 따른다. 기존 pkg는 `build/appstore/Alright-0.6.1-9-macOS-AppStore.pkg`이며 가격·판매·자동 출시 설정을 변경하지 않았다. 아래 빌드 7·8의 dist/ 기록과 10월 15일 최초 제출 기록은 과거 이력이다.
 
 Alright의 App Store 배포 후보는 기존 canonical 앱 `build/bin/Alright.app`에서 직접 만든다. Finder Sync 확장도 같은 앱의 `Contents/PlugIns/AlrightFinderSync.appex`에 포함한다. 앱을 `dist/`, 다른 빌드 경로 또는 패키지 검증용 디렉터리에 복사하지 않는다. 새 패키지와 검증 manifest는 `build/appstore/`에만 생성한다. 기존 `dist/` 파일은 과거 업로드 이력으로 보존한다.
 
@@ -69,7 +69,7 @@ No suitable application records were found
 
 2026-10-09 최초 확인 시 App Store Connect에는 `Time Scopes`와 `iisacc Vincent` 앱 레코드만 있었고, Alright 레코드는 없었다. Apple Developer의 explicit Identifier `com.iisacc.Alright`도 등록되지 않은 상태였다. App Store Connect의 계정과 패키지의 서명 팀은 동일한 `MUYEONG YUN` / `5U49ST9XZH`였다. 이후 해당 explicit Identifier 등록과 아래 App Store Connect 앱 레코드 생성을 완료하였다.
 
-App Store Connect에서 `Alright` 단독 이름은 이미 사용 중이라는 이유로 거부되었다. 최종 스토어 이름은 `Alright - New File in Finder`이며, [생성된 앱 정보 페이지](https://appstoreconnect.apple.com/apps/6820835356/distribution/info)에서 확인한 값은 다음과 같다.
+App Store Connect에서 `Alright` 단독 이름은 이미 사용 중이라는 이유로 거부되었다. 2026-10-09 생성 당시 스토어 이름은 `Alright - New File in Finder`였으며, [앱 정보 페이지](https://appstoreconnect.apple.com/apps/6820835356/distribution/info)에서 당시 확인한 값은 다음과 같다. 이 이름은 2026-10-20 심사에서 5.2.5로 반려되어, 2026-10-21 `Alright - New File`로 변경하였다.
 
 | 항목 | 생성 완료 값 |
 | --- | --- |
@@ -191,3 +191,23 @@ ASC 사전 확인에서 미국 기준 가격은 이미 USD 0.99이며, 175개 �
 ## 2026-10-15 23:54 UTC App Review 제출 완료
 
 필수 심사 연락처 이름·성은 사용자가 허용한 `Muyeong / Yun`으로 저장했다. 전화·이메일과 함께 페이지 재로드 후 영속화된 값을 확인했으며, 기존 빌드 `0.6.1 (9)`를 재업로드하지 않았다. Add for Review 검증을 통과한 한 항목을 Submit for Review로 제출하여 `1 Item Submitted`, Draft Submissions `0`, 앱 버전과 제출 상세의 **Waiting for Review**를 확인했다. 제출 ID는 `5ccee0ab-5fc0-4750-8246-2d56908d8be6`이고 [접수 상세](https://appstoreconnect.apple.com/apps/6820835356/distribution/reviewsubmissions/details/5ccee0ab-5fc0-4750-8246-2d56908d8be6)의 Date Submitted는 `Oct 16, 2026 at 8:54 AM (Asia/Seoul)`이다. UTC로 `2026-10-15 23:54`이며 ASC 표시 정밀도는 분 단위이다. `build/verification/icon-submission-20261015/app-review-submitted.json` 및 `review-submission-timing.json`에 표시 시각과 확인 시각을 구분해 기록했다. 심사 승인·출시나 구매 후 설치 검증은 아직 완료되지 않았다.
+
+## 2026-10-21 앱 이름 수정 및 재심사 제출
+
+Apple의 2026-10-20 심사는 빌드 `0.6.1 (9)`에 대해 **5.2.5 Legal: Intellectual Property - Apple Products (macOS)**를 통지하였다. 구체적으로 지적된 내용은 앱 이름에 `Finder`를 사용한 점이다. 인증된 Chrome의 제출 상세에서 통지 내용, 빌드와 제출 ID를 다시 확인하였다.
+
+[Apple 상표 사용 지침](https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html)은 호환성을 설명하는 참조 표현에 대한 조건과 제품명에 Apple 상표를 포함하는 경우를 구분한다. 이번 조치에서는 App Information의 English (U.S.) 이름을 `Alright - New File in Finder`에서 **`Alright - New File`**로 변경했다. `Saved` 표시와 페이지 새로고침 후 이름 필드·앱 제목을 확인했다. 추가로 현지화된 언어는 없으며 부제목은 빈 값이다. 설명과 심사 절차의 Finder 참조, 기존 검색 키워드와 스크린샷 두 개는 변경하지 않았다.
+
+현재 제출 메타데이터의 재사용 원본은 [metadata-en-US.json](../resources/Appstore/metadata-en-US.json)이다. 이름 18자, 설명 771자, 키워드 87자를 확인하여 각 입력 제한인 30자·4,000자·100자 이내임을 검증하였다. 호스트 앱의 `CFBundleName`과 `CFBundleDisplayName`은 이미 `Alright`이며 버전·빌드 번호는 `0.6.1 (9)`이다. 소스 코드, 앱 번들과 기존 pkg를 수정하거나 재빌드·재업로드하지 않았다. 기존 pkg의 SHA-256은 `a39c7ac45fed8317d872d219a3f6a6ccdfb27939c55ab9d4aec323149e9eb419`로 일치한다.
+
+앱 버전의 **Update Review**를 실행해 해당 항목이 **Ready for Review**로 바뀐 것을 확인한 뒤, 기존 제출 상세의 **Resubmit to App Review**를 실행하였다. 최종 화면에서 제출 전체와 항목 모두 **Waiting for Review**, **Items Submitted (1)**, 기존 빌드 **0.6.1 (9)**를 확인하였다. Date Submitted는 **Oct 21, 2026 at 6:13 AM (Asia/Seoul)**이며, 기존 제출 ID `5ccee0ab-5fc0-4750-8246-2d56908d8be6`를 유지한다. 이 결과는 재심사 접수이며 승인·공개 출시를 뜻하지 않는다. 심사 메시지는 Apple의 기존 메시지 1개이며 별도 답장은 발송하지 않았다.
+
+이번 관측과 검증 결과는 `build/verification/review-metadata-20261021/result.json`에 기록했다. 과거 최초 제출·패키지 검증 기록은 그대로 보존한다.
+
+## 2026-10-23 재제출 상태 확인
+
+동일한 반려 통지와 제출 ID에 대한 수정·재제출 요청을 받아, 과거 기록에만 의존하지 않고 인증된 Chrome의 [ASC 제출 상세](https://appstoreconnect.apple.com/apps/6820835356/distribution/reviewsubmissions/details/5ccee0ab-5fc0-4750-8246-2d56908d8be6)를 다시 확인했다. 앱 제목은 **Alright - New File**이며 제출 전체와 `0.6.1 (9)` 항목 모두 **Waiting for Review**, **Items Submitted (1)**이다. 표시된 재제출 시각은 **Oct 21, 2026 at 6:13 AM (Asia/Seoul)**이다.
+
+메시지 목록은 **Messages (1)**이며 기존 2026-10-20 심사의 5.2.5 통지만 있다. 추가 반려 통지는 관측되지 않았다. 이름 수정과 재제출이 이미 접수된 상태이므로 기존 심사 대기열을 유지했으며, 이번 확인에서는 제출 취소·중복 재제출·메타데이터 변경·빌드 재업로드·심사 답장 발송을 수행하지 않았다. 심사 승인과 공개 출시를 확인한 결과는 아니다.
+
+이번 실화면 확인 결과는 `build/verification/review-metadata-20261023/result.json`에 별도로 기록했다. 소스 코드와 앱 번들은 변경하지 않았다.
