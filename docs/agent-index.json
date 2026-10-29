@@ -1,0 +1,132 @@
+{
+  "format": "iisacc.agent-document-index",
+  "schema_version": 1,
+  "project": {
+    "id": "urn:iisacc:project:Product%2FUtility%2FAlright",
+    "name": "Alright",
+    "root": "Product/Utility/Alright",
+    "kind": "application"
+  },
+  "documentation_root": "docs",
+  "agent_schema": "docs/agent-document.schema.json",
+  "documents": [
+    {
+      "document_id": "urn:iisacc:document:bd0e89a66e2258f6e187f632f2ec95f98df9186ee13b6c18f23c3199a234a4cb",
+      "source": "AGENT.md",
+      "agent_json": "docs/entrypoints/AGENT.agent.json",
+      "source_sha256": "e835373a1f7e877a9542a763b4b345481c9a7e3cb25baf402ed2693eab599c26",
+      "role": "instructions"
+    },
+    {
+      "document_id": "urn:iisacc:document:651fa3127ab6acc465e443ae51aa0753c6e43b8c96cd196ba94aa4747fc27859",
+      "source": "README.md",
+      "agent_json": "docs/entrypoints/README.agent.json",
+      "source_sha256": "298456079c386ebf7531e4a7f9be4461ca5b7f643dffc52c08e6d695b83e7fed",
+      "role": "overview"
+    },
+    {
+      "document_id": "urn:iisacc:document:58cb94c5448a336c19d3cdef6e05ddb19d2f47fcad6527105696c07fe040a6d4",
+      "source": "docs/AppStoreDistribution.md",
+      "agent_json": "docs/AppStoreDistribution.agent.json",
+      "source_sha256": "d5a7706ce9a0a6e260f9c69ce474dc3b40978f014acb3952229c818e3d0cc408",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:b57cb371349c47354c3ec209ff83f0479134033ded7905f4c9f4b1ea9c890d0d",
+      "source": "docs/BLUEPRINT.md",
+      "agent_json": "docs/BLUEPRINT.agent.json",
+      "source_sha256": "ca76b2fa44a7576e1b213277be49162aece45f4034212783015c34a52cfd32e6",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:14ae862a138b93a64bbb588de3ff9dc88f5ab46ea8c86445fd683502b230e789",
+      "source": "docs/DELIVERY.md",
+      "agent_json": "docs/DELIVERY.agent.json",
+      "source_sha256": "4c85817641b15e65abb374a9e7b6e43c1374e7a28447123f35ea464fa64e5b41",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:ebb36938970ec87c5ca0473abd8282512d955012770f04c3a4eb10eab35f50d6",
+      "source": "docs/DocumentCreation.md",
+      "agent_json": "docs/DocumentCreation.agent.json",
+      "source_sha256": "fc66902774f7babd85c06a72d6d6e3cb2e3f72a58254fe96e987240d66f7667b",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:5dc2ff90b6d0676b362555eb19ecdd646ffbc95f51d76c7733be3431045e2fa7",
+      "source": "docs/FILE_PROVIDER.md",
+      "agent_json": "docs/FILE_PROVIDER.agent.json",
+      "source_sha256": "f433a0d42610f5de23279cffeae9f4c651ed6d0d833ab48b415c3f9795d72598",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:5e52ccfc2ab5019c726f3b7f62e540d42598aff9a7cd231f3cb693c2115c9274",
+      "source": "docs/FinderNewText.md",
+      "agent_json": "docs/FinderNewText.agent.json",
+      "source_sha256": "93ba14e1eca68f2efd41e92bd7a719e6ff179cdaeb796a64a412d854092c72ac",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:ad9b500f7b8144c88e4bb44f0578e685a1fb5326e42fa653a9d38f7a179d30b4",
+      "source": "docs/HelloWorld.md",
+      "agent_json": "docs/HelloWorld.agent.json",
+      "source_sha256": "9370ba4eb91ebb22ad63f97da5dac11ca31ac1fcf1674269231f5231c33aab31",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:bd77ea04c7addcf10a0cdebed475338de997dcdf1f82442bc5f865ecccb1a7ca",
+      "source": "docs/OfficeDocuments.md",
+      "agent_json": "docs/OfficeDocuments.agent.json",
+      "source_sha256": "bda6ffc3d7856fbd9400b66debf09ccc21d8fa330fff78ed0c2251a753b90ab2",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:ebe5eee85dbbf41c203052bce0a71a3f965c75079c5645fa6ffd04eada981029",
+      "source": "docs/README.md",
+      "agent_json": "docs/README.agent.json",
+      "source_sha256": "11e000862e0421334bdc1f36696b828e57dacbb53a5ee9fa8025316a7e201af8",
+      "role": "overview"
+    },
+    {
+      "document_id": "urn:iisacc:document:b095043902eb6d8e3069475bb9b5a8fced7232fdd279340f10743b4f32d5349c",
+      "source": "docs/SingleAppBuild.md",
+      "agent_json": "docs/SingleAppBuild.agent.json",
+      "source_sha256": "75780b4e2e4a3584dd49873add7baa8181895c4d08a0ce8eed0fea5124d5ffc0",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:f0b45ea92e3c691d8af942b9e8eec491a64a85a7cc6fae52ca1d142ef1c5962d",
+      "source": "docs/TestFlightProfiles.md",
+      "agent_json": "docs/TestFlightProfiles.agent.json",
+      "source_sha256": "f023442a7c677bacacedc817454ac827bd017add0dae0cbac998b8770fc7f3ad",
+      "role": "evidence"
+    },
+    {
+      "document_id": "urn:iisacc:document:954dfe993ede32ff6feedd1773b60906a8eda48ec9dde334bacde89bb68c3704",
+      "source": "docs/documentation-structure.md",
+      "agent_json": "docs/documentation-structure.agent.json",
+      "source_sha256": "f9c700703ee039e70b7ba3c0f9bba38c6669929d77ccddbf7824374160766c5d",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:cd10e2d2419e8cf846a4a10fcd3ab14721f72b23b9909be4d46d0ec7591c1e7b",
+      "source": "resources/AppIcon/README.md",
+      "agent_json": "docs/mirrors/resources/AppIcon/README.agent.json",
+      "source_sha256": "315e43300e6e63ce63542d7640492adc30b4bb729248b147d20b7263a7e42c1d",
+      "role": "overview"
+    }
+  ],
+  "layout": {
+    "human_entry": "README.md",
+    "agent_entry": "AGENT.md",
+    "human_format": "markdown",
+    "agent_format": "structured_json",
+    "source_authority": "markdown"
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

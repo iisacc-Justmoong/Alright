@@ -60,3 +60,12 @@ The only app bundle is `build/bin/Alright.app` and the Finder extension is the i
 - Create documents in the registered folder. 0.5.0 ends with Finder name editing. PSD · AI format is verified with Photoshop ·Illustrator. Path copy, file copy, and move are subsequent scopes.
 
 Blueprint creation date: 2026-09-20. Swift transition date: 2026-09-25. Facts verified in technical documentation, product design hypotheses, and unverified items are distinguished in each document.
+
+<!-- workspace-docs:readme:start -->
+## Documentation entry points
+
+- Human overview: this English `README.md`.
+- Agent instructions: [AGENT.md](AGENT.md).
+- Human documentation: [documentation index](docs/README.md).
+- Structured agent documentation: [agent index](docs/agent-index.json).
+<!-- workspace-docs:readme:end -->

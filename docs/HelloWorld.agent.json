@@ -1,0 +1,378 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:ad9b500f7b8144c88e4bb44f0578e685a1fb5326e42fa653a9d38f7a179d30b4",
+  "project": {
+    "id": "urn:iisacc:project:Product%2FUtility%2FAlright",
+    "name": "Alright",
+    "root": "Product/Utility/Alright",
+    "kind": "application"
+  },
+  "source": {
+    "path": "docs/HelloWorld.md",
+    "sha256": "9370ba4eb91ebb22ad63f97da5dac11ca31ac1fcf1674269231f5231c33aab31",
+    "bytes": 2841,
+    "line_count": 41,
+    "encoding": "utf-8",
+    "language": "ko"
+  },
+  "document": {
+    "title": "Hello World 호스트 앱",
+    "role": "guide",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "heading",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "# Hello World 호스트 앱\n",
+      "level": 1,
+      "title": "Hello World 호스트 앱"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "paragraph",
+      "start_line": 3,
+      "end_line": 3,
+      "raw": "이 문서는 2026-09-24의 최초 구현 기록이다. 2026-09-25부터 현재 화면과 기능은 [Finder New Text](FinderNewText.md)로 발전했으며 아래 미구현 항목·ad-hoc 서명 설명은 당시 상태이다.\n"
+    },
+    {
+      "id": "b000004",
+      "kind": "blank",
+      "start_line": 4,
+      "end_line": 4,
+      "raw": "\n"
+    },
+    {
+      "id": "b000005",
+      "kind": "paragraph",
+      "start_line": 5,
+      "end_line": 5,
+      "raw": "2026-09-24 구현. 기존 Finder 유틸리티 청사진의 AppKit 호스트를 실행 가능한 최소 앱으로 구성하였다.\n"
+    },
+    {
+      "id": "b000006",
+      "kind": "blank",
+      "start_line": 6,
+      "end_line": 6,
+      "raw": "\n"
+    },
+    {
+      "id": "b000007",
+      "kind": "heading",
+      "start_line": 7,
+      "end_line": 7,
+      "raw": "## 구현 범위\n",
+      "level": 2,
+      "title": "구현 범위"
+    },
+    {
+      "id": "b000008",
+      "kind": "blank",
+      "start_line": 8,
+      "end_line": 8,
+      "raw": "\n"
+    },
+    {
+      "id": "b000009",
+      "kind": "list",
+      "start_line": 9,
+      "end_line": 13,
+      "raw": "- C++23·Objective-C++와 AppKit, ARC 메모리 관리.\n- Alright 창과 `Hello World`, `Right where you click.` 표시.\n- 창 닫기 후 프로세스 유지, Dock/Finder 재열기, 동일 창의 위치·크기 유지.\n- About, Hide, Quit, Show Alright, Minimize, Close 표준 메뉴.\n- 단일 앱 빌드, 로컬 ad-hoc 서명, 외부 런타임 없는 실행.\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "C++23·Objective-C++와 AppKit, ARC 메모리 관리.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Alright 창과 `Hello World`, `Right where you click.` 표시.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "창 닫기 후 프로세스 유지, Dock/Finder 재열기, 동일 창의 위치·크기 유지.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "About, Hide, Quit, Show Alright, Minimize, Close 표준 메뉴.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "단일 앱 빌드, 로컬 ad-hoc 서명, 외부 런타임 없는 실행.",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000010",
+      "kind": "blank",
+      "start_line": 14,
+      "end_line": 14,
+      "raw": "\n"
+    },
+    {
+      "id": "b000011",
+      "kind": "paragraph",
+      "start_line": 15,
+      "end_line": 15,
+      "raw": "Finder Sync 확장, 파일 생성·복사·이동, 권한 등록, 설정 저장, 배포용 서명·공증은 후속 작업이다. G0와 제품 인수 테스트 A01–A15는 이번 Hello World 완료와 별개이다. 재사용할 파일 작업 로직이 없는 단계이므로 빈 SDK·core 계층을 추가하지 않았다.\n"
+    },
+    {
+      "id": "b000012",
+      "kind": "blank",
+      "start_line": 16,
+      "end_line": 16,
+      "raw": "\n"
+    },
+    {
+      "id": "b000013",
+      "kind": "heading",
+      "start_line": 17,
+      "end_line": 17,
+      "raw": "## 자동 검증\n",
+      "level": 2,
+      "title": "자동 검증"
+    },
+    {
+      "id": "b000014",
+      "kind": "blank",
+      "start_line": 18,
+      "end_line": 18,
+      "raw": "\n"
+    },
+    {
+      "id": "b000015",
+      "kind": "paragraph",
+      "start_line": 19,
+      "end_line": 19,
+      "raw": "`ctest --test-dir build --output-on-failure`를 실행한다.\n"
+    },
+    {
+      "id": "b000016",
+      "kind": "blank",
+      "start_line": 20,
+      "end_line": 20,
+      "raw": "\n"
+    },
+    {
+      "id": "b000017",
+      "kind": "table",
+      "start_line": 21,
+      "end_line": 24,
+      "raw": "| 테스트 | 검증 내용 |\n| --- | --- |\n| `Alright.AppLifecycle` | 실제 AppKit 창 생성, Hello World 라벨, 닫기·재열기, 창 객체·위치·크기 보존, 표준 종료 메뉴 |\n| `Alright.Bundle` | build 전체에 앱 한 개, Info.plist, 실행 파일, 시스템 라이브러리만 참조, 서명 유효성 |\n",
+      "columns": [
+        "테스트",
+        "검증 내용"
+      ],
+      "rows": [
+        [
+          "`Alright.AppLifecycle`",
+          "실제 AppKit 창 생성, Hello World 라벨, 닫기·재열기, 창 객체·위치·크기 보존, 표준 종료 메뉴"
+        ],
+        [
+          "`Alright.Bundle`",
+          "build 전체에 앱 한 개, Info.plist, 실행 파일, 시스템 라이브러리만 참조, 서명 유효성"
+        ]
+      ]
+    },
+    {
+      "id": "b000018",
+      "kind": "blank",
+      "start_line": 25,
+      "end_line": 25,
+      "raw": "\n"
+    },
+    {
+      "id": "b000019",
+      "kind": "paragraph",
+      "start_line": 26,
+      "end_line": 26,
+      "raw": "AppLifecycle 테스트는 로그인한 macOS GUI 세션에서 실행하며 테스트 중 창이 잠시 표시된다. 실제 앱의 Launch Services 실행과 키보드 종료는 별도 수동 검증 대상이다.\n"
+    },
+    {
+      "id": "b000020",
+      "kind": "blank",
+      "start_line": 27,
+      "end_line": 27,
+      "raw": "\n"
+    },
+    {
+      "id": "b000021",
+      "kind": "heading",
+      "start_line": 28,
+      "end_line": 28,
+      "raw": "## 실제 실행 기록\n",
+      "level": 2,
+      "title": "실제 실행 기록"
+    },
+    {
+      "id": "b000022",
+      "kind": "blank",
+      "start_line": 29,
+      "end_line": 29,
+      "raw": "\n"
+    },
+    {
+      "id": "b000023",
+      "kind": "paragraph",
+      "start_line": 30,
+      "end_line": 30,
+      "raw": "검증 환경: macOS 27.0 (26A428), Apple Silicon arm64, AppleClang 21.0.0, CMake 4.4.3, Debug 빌드. macOS 14.0은 빌드 최소 대상이며 해당 버전 실기기 검증 결과는 아니다.\n"
+    },
+    {
+      "id": "b000024",
+      "kind": "blank",
+      "start_line": 31,
+      "end_line": 31,
+      "raw": "\n"
+    },
+    {
+      "id": "b000025",
+      "kind": "list",
+      "start_line": 32,
+      "end_line": 39,
+      "raw": "- CMake 구성·빌드 성공, 마지막 빌드에 컴파일 경고 없음.\n- CTest 2/2 통과: AppLifecycle, Bundle.\n- Product 정책 복사본 일치 테스트 1개와 감사 도구 회귀 테스트 3개 통과.\n- canonical 경로에서 실행한 실제 창의 접근성 트리와 스크린샷으로 Hello World 표시 확인.\n- 실제 `⌘W` 입력 후 화면에 Alright 창이 없고 프로세스 PID 19798은 유지됨을 확인.\n- 앱 재열기 후 Hello World 창 표시와 같은 PID 19798 유지 확인.\n- 실제 `⌘Q` 입력 후 프로세스 종료 확인. 검증 후 앱을 다시 실행해 둠.\n- 별도 AppKit 자동 테스트에서 창 위치·크기 변경 후 닫기·재열기 보존 확인.\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "CMake 구성·빌드 성공, 마지막 빌드에 컴파일 경고 없음.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "CTest 2/2 통과: AppLifecycle, Bundle.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Product 정책 복사본 일치 테스트 1개와 감사 도구 회귀 테스트 3개 통과.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "canonical 경로에서 실행한 실제 창의 접근성 트리와 스크린샷으로 Hello World 표시 확인.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "실제 `⌘W` 입력 후 화면에 Alright 창이 없고 프로세스 PID 19798은 유지됨을 확인.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "앱 재열기 후 Hello World 창 표시와 같은 PID 19798 유지 확인.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "실제 `⌘Q` 입력 후 프로세스 종료 확인. 검증 후 앱을 다시 실행해 둠.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "별도 AppKit 자동 테스트에서 창 위치·크기 변경 후 닫기·재열기 보존 확인.",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000026",
+      "kind": "blank",
+      "start_line": 40,
+      "end_line": 40,
+      "raw": "\n"
+    },
+    {
+      "id": "b000027",
+      "kind": "paragraph",
+      "start_line": 41,
+      "end_line": 41,
+      "raw": "재생성 가능한 로컬 증거: `build/verification/hello-world.png`, `build/verification/bundle-audit.json`, `build/Testing/Temporary/LastTest.log`. build 산출물은 Git에서 제외한다.\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000001",
+      "parent_id": null,
+      "level": 1,
+      "title": "Hello World 호스트 앱",
+      "anchor": "hello-world-호스트-앱",
+      "start_line": 1
+    },
+    {
+      "block_id": "b000007",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "구현 범위",
+      "anchor": "구현-범위",
+      "start_line": 7
+    },
+    {
+      "block_id": "b000013",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "자동 검증",
+      "anchor": "자동-검증",
+      "start_line": 17
+    },
+    {
+      "block_id": "b000021",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "실제 실행 기록",
+      "anchor": "실제-실행-기록",
+      "start_line": 28
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [],
+    "commands": [],
+    "links": [
+      {
+        "block_id": "b000003",
+        "label": "Finder New Text",
+        "target": "FinderNewText.md",
+        "kind": "relative",
+        "line": 3
+      }
+    ],
+    "tables": [
+      {
+        "block_id": "b000017",
+        "columns": [
+          "테스트",
+          "검증 내용"
+        ],
+        "rows": [
+          [
+            "`Alright.AppLifecycle`",
+            "실제 AppKit 창 생성, Hello World 라벨, 닫기·재열기, 창 객체·위치·크기 보존, 표준 종료 메뉴"
+          ],
+          [
+            "`Alright.Bundle`",
+            "build 전체에 앱 한 개, Info.plist, 실행 파일, 시스템 라이브러리만 참조, 서명 유효성"
+          ]
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

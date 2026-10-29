@@ -1,0 +1,688 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:651fa3127ab6acc465e443ae51aa0753c6e43b8c96cd196ba94aa4747fc27859",
+  "project": {
+    "id": "urn:iisacc:project:Product%2FUtility%2FAlright",
+    "name": "Alright",
+    "root": "Product/Utility/Alright",
+    "kind": "application"
+  },
+  "source": {
+    "path": "README.md",
+    "sha256": "298456079c386ebf7531e4a7f9be4461ca5b7f643dffc52c08e6d695b83e7fed",
+    "bytes": 7930,
+    "line_count": 71,
+    "encoding": "utf-8",
+    "language": "ko"
+  },
+  "document": {
+    "title": "Alright",
+    "role": "overview",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "heading",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "# Alright\n",
+      "level": 1,
+      "title": "Alright"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "paragraph",
+      "start_line": 3,
+      "end_line": 3,
+      "raw": "**From the moment you create a file in Finder to the moment you organize it, it is a macOS utility that completes necessary tasks with a right-click.**\n"
+    },
+    {
+      "id": "b000004",
+      "kind": "blank",
+      "start_line": 4,
+      "end_line": 4,
+      "raw": "\n"
+    },
+    {
+      "id": "b000005",
+      "kind": "paragraph",
+      "start_line": 5,
+      "end_line": 5,
+      "raw": "Brand slogan draft: **Alright. Right where you click.**\n"
+    },
+    {
+      "id": "b000006",
+      "kind": "blank",
+      "start_line": 6,
+      "end_line": 6,
+      "raw": "\n"
+    },
+    {
+      "id": "b000007",
+      "kind": "paragraph",
+      "start_line": 7,
+      "end_line": 7,
+      "raw": "It is currently a macOS-only app whose workflow ends with **right-click an empty space in Finder → Alright → create a file → enter its name in Finder**. The direct distribution build starts Finder filename editing automatically. The App Store build selects the created file in Finder; press Return to edit its name. It supports 16 formats: TXT, Markdown, RTF, PDF, DOCX, XLSX, PPTX, ODT, ODS, ODP, JSON, CSV, HTML, SVG, Photoshop PSD, and Illustrator AI. It uses Swift 6, AppKit, and Finder Sync, and requires neither Qt nor an external runtime. The app icon uses the Illustrator artwork in `resources/AppIcon/`; screen and menu icons use SF Symbols.\n"
+    },
+    {
+      "id": "b000008",
+      "kind": "blank",
+      "start_line": 8,
+      "end_line": 8,
+      "raw": "\n"
+    },
+    {
+      "id": "b000009",
+      "kind": "html",
+      "start_line": 9,
+      "end_line": 9,
+      "raw": "<a id=\"빌드와-실행\"></a>\n"
+    },
+    {
+      "id": "b000010",
+      "kind": "blank",
+      "start_line": 10,
+      "end_line": 10,
+      "raw": "\n"
+    },
+    {
+      "id": "b000011",
+      "kind": "heading",
+      "start_line": 11,
+      "end_line": 11,
+      "raw": "## Build and run\n",
+      "level": 2,
+      "title": "Build and run"
+    },
+    {
+      "id": "b000012",
+      "kind": "blank",
+      "start_line": 12,
+      "end_line": 12,
+      "raw": "\n"
+    },
+    {
+      "id": "b000013",
+      "kind": "paragraph",
+      "start_line": 13,
+      "end_line": 13,
+      "raw": "To provide macOS, Swift   6, Xcode, CMake   3.24 or higher, Ninja, Python   3, and a valid macOS code signing certificate are required. Python Standard libraries are used only to package and test Office documents during build. The deployed app creates files without Python ·Office· LibreOffice installation. Run from the project directory.\n"
+    },
+    {
+      "id": "b000014",
+      "kind": "blank",
+      "start_line": 14,
+      "end_line": 14,
+      "raw": "\n"
+    },
+    {
+      "id": "b000015",
+      "kind": "fenced_code",
+      "start_line": 15,
+      "end_line": 21,
+      "raw": "```sh\ncmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DALRIGHT_APP_STORE=OFF\ncmake --build build\nctest --test-dir build --output-on-failure\ncmake --build build --target AlrightRegisterExtension\nopen build/bin/Alright.app\n```\n",
+      "language": "sh",
+      "code": "cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DALRIGHT_APP_STORE=OFF\ncmake --build build\nctest --test-dir build --output-on-failure\ncmake --build build --target AlrightRegisterExtension\nopen build/bin/Alright.app\n",
+      "closed": true
+    },
+    {
+      "id": "b000016",
+      "kind": "blank",
+      "start_line": 22,
+      "end_line": 22,
+      "raw": "\n"
+    },
+    {
+      "id": "b000017",
+      "kind": "paragraph",
+      "start_line": 23,
+      "end_line": 23,
+      "raw": "When switching to an existing Unix Makefiles build tree, run one time   `cmake --fresh -S . -B build -G Ninja` initially. Swift Intermediate files for module, debug symbols, and icon creation are also placed in `build/`.\n"
+    },
+    {
+      "id": "b000018",
+      "kind": "blank",
+      "start_line": 24,
+      "end_line": 24,
+      "raw": "\n"
+    },
+    {
+      "id": "b000019",
+      "kind": "paragraph",
+      "start_line": 25,
+      "end_line": 25,
+      "raw": "The editable app icon is `resources/AppIcon/Alright.ai`, with a vector SVG copy and a 1024 × 1024 PNG master alongside it. The PNG fills the complete square with opaque artwork, without an outer border or transparent padding. `AlrightIconGenerator` resamples this master into the ten standard iconset representations, and `iconutil` packages them into the app's `Alright.icns`. Re-exporting the PNG from Illustrator and rebuilding updates the bundled icon before signing. `Alright.Bundle` validates the master's dimensions and opacity, every generated representation, and the generated-to-bundled ICNS identity.\n"
+    },
+    {
+      "id": "b000020",
+      "kind": "blank",
+      "start_line": 26,
+      "end_line": 26,
+      "raw": "\n"
+    },
+    {
+      "id": "b000021",
+      "kind": "paragraph",
+      "start_line": 27,
+      "end_line": 27,
+      "raw": "The host bundle declares `CFBundleIcons → CFBundlePrimaryIcon → CFBundleSymbolName = folder` for Finder's sidebar. Registered folders such as Workspace display the native folder SF Symbol. `Alright.Bundle` checks this declaration together with the application's ICNS artwork so rebuilding cannot replace folder symbols with the Alright app icon.\n"
+    },
+    {
+      "id": "b000022",
+      "kind": "blank",
+      "start_line": 28,
+      "end_line": 28,
+      "raw": "\n"
+    },
+    {
+      "id": "b000023",
+      "kind": "paragraph",
+      "start_line": 29,
+      "end_line": 29,
+      "raw": "The default signing configuration is the `Developer ID Application: MUYEONG YUN (5U49ST9XZH)` held locally. In other development environments, CMake's `ALRIGHT_SIGNING_IDENTITY` and `ALRIGHT_TEAM_ID` are specified together. Since apps and extensions from the same team share a container, ad-hoc signing is not used as a replacement. Set `ALRIGHT_APP_STORE=ON` for the sandboxed App Store workflow and use an Apple Distribution app signing identity. The signed installer package uses a separate Mac Installer Distribution identity. Build and package instructions are in [App Store distribution](docs/AppStoreDistribution.md).\n"
+    },
+    {
+      "id": "b000024",
+      "kind": "blank",
+      "start_line": 30,
+      "end_line": 30,
+      "raw": "\n"
+    },
+    {
+      "id": "b000025",
+      "kind": "list",
+      "start_line": 31,
+      "end_line": 35,
+      "raw": "1. Enable the Alright extension in `Finder Extension Settings…`. Registration and activation have been completed on the current development computer.\n2. Select a folder to use as `Add Folder…` and grant read/write permissions. The selected folder and subfolders are the targets.\n3. In a direct distribution build, set the macOS accessibility permission required for automatic Finder name editing in `Enable Filename Editing…`. The App Store build does not request this permission.\n4. Open the folder in Finder and **right-click empty space → Alright → select desired document type**.\n5. The direct distribution build starts filename editing in Finder. In the App Store build, the created file is selected in Finder; press Return to edit its name. If the name already exists, ` 2` and ` 3` are appended. TXT is 0 bytes and PSD ·AI is created with the pixel size of the right-clicked screen. The editor is not automatically opened. Initial content by format is specified in [document creation](docs/DocumentCreation.md).\n",
+      "items": [
+        {
+          "marker": "1.",
+          "text": "Enable the Alright extension in `Finder Extension Settings…`. Registration and activation have been completed on the current development computer.",
+          "checked": null
+        },
+        {
+          "marker": "2.",
+          "text": "Select a folder to use as `Add Folder…` and grant read/write permissions. The selected folder and subfolders are the targets.",
+          "checked": null
+        },
+        {
+          "marker": "3.",
+          "text": "In a direct distribution build, set the macOS accessibility permission required for automatic Finder name editing in `Enable Filename Editing…`. The App Store build does not request this permission.",
+          "checked": null
+        },
+        {
+          "marker": "4.",
+          "text": "Open the folder in Finder and **right-click empty space → Alright → select desired document type**.",
+          "checked": null
+        },
+        {
+          "marker": "5.",
+          "text": "The direct distribution build starts filename editing in Finder. In the App Store build, the created file is selected in Finder; press Return to edit its name. If the name already exists, ` 2` and ` 3` are appended. TXT is 0 bytes and PSD ·AI is created with the pixel size of the right-clicked screen. The editor is not automatically opened. Initial content by format is specified in [document creation](docs/DocumentCreation.md).",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000026",
+      "kind": "blank",
+      "start_line": 36,
+      "end_line": 36,
+      "raw": "\n"
+    },
+    {
+      "id": "b000027",
+      "kind": "paragraph",
+      "start_line": 37,
+      "end_line": 37,
+      "raw": "`Remove` removes folder registration and access permissions saved by the app. User files are not deleted. Closing the window or `⌘W` closes only the window, while `⌘Q` exits the app. Even if the app is terminated, it is re-executed by the New Text request of the active Finder extension.\n"
+    },
+    {
+      "id": "b000028",
+      "kind": "blank",
+      "start_line": 38,
+      "end_line": 38,
+      "raw": "\n"
+    },
+    {
+      "id": "b000029",
+      "kind": "paragraph",
+      "start_line": 39,
+      "end_line": 39,
+      "raw": "The only app bundle is `build/bin/Alright.app` and the Finder extension is the internal `Contents/PlugIns/AlrightFinderSync.appex`. Direct distribution uses Developer ID signing and hardened runtime; the Finder extension maintains App Sandbox, while the host uses accessibility permissions for automatic Finder name editing. App Store distribution enables App Sandbox for both bundles and uses Finder selection with manual Return instead of Accessibility APIs. Its signed `.pkg` is created directly from the canonical app and saved in `build/appstore/`. Full disk access and Apple Events automation permissions are not required. Local direct builds omit timestamps and notarization. App Store upload and review are separate from local build, test, and package signature verification. Current behavior and constraints are specified in [document creation](docs/DocumentCreation.md) and [App Store distribution](docs/AppStoreDistribution.md).\n"
+    },
+    {
+      "id": "b000030",
+      "kind": "blank",
+      "start_line": 40,
+      "end_line": 40,
+      "raw": "\n"
+    },
+    {
+      "id": "b000031",
+      "kind": "table",
+      "start_line": 41,
+      "end_line": 50,
+      "raw": "|Document|Content|\n| --- | --- |\n|[Product and Technology Blueprint](docs/BLUEPRINT.md)|User, feature scope, right-click structure, native architecture, SDK utilization, monetization|\n|[Execution and Verification Plan](docs/DELIVERY.md)|Technical proof, implementation order, acceptance criteria, failure handling, release gate|\n|[Finder New Text Implementation](docs/FinderNewText.md)|Permission and extension structure, testing, actual Finder execution evidence|\n|[Various Document Creation](docs/DocumentCreation.md)|Alright submenu, 16 format, screen size, Finder name edit|\n|[Create Office document](docs/OfficeDocuments.md)|DOCX · XLSX · PPTX · ODT · ODS · ODP ,  XML  original and packaging/verification|\n|[Hello World implementation](docs/HelloWorld.md)|Past verification record of initial host app implementation|\n|[Single app build](docs/SingleAppBuild.md)|Output path, rebuild/sign rules|\n|[App Store distribution](docs/AppStoreDistribution.md)|Sandboxed Finder workflow, distribution signing, installer package and verification|\n",
+      "columns": [
+        "Document",
+        "Content"
+      ],
+      "rows": [
+        [
+          "[Product and Technology Blueprint](docs/BLUEPRINT.md)",
+          "User, feature scope, right-click structure, native architecture, SDK utilization, monetization"
+        ],
+        [
+          "[Execution and Verification Plan](docs/DELIVERY.md)",
+          "Technical proof, implementation order, acceptance criteria, failure handling, release gate"
+        ],
+        [
+          "[Finder New Text Implementation](docs/FinderNewText.md)",
+          "Permission and extension structure, testing, actual Finder execution evidence"
+        ],
+        [
+          "[Various Document Creation](docs/DocumentCreation.md)",
+          "Alright submenu, 16 format, screen size, Finder name edit"
+        ],
+        [
+          "[Create Office document](docs/OfficeDocuments.md)",
+          "DOCX · XLSX · PPTX · ODT · ODS · ODP ,  XML  original and packaging/verification"
+        ],
+        [
+          "[Hello World implementation](docs/HelloWorld.md)",
+          "Past verification record of initial host app implementation"
+        ],
+        [
+          "[Single app build](docs/SingleAppBuild.md)",
+          "Output path, rebuild/sign rules"
+        ],
+        [
+          "[App Store distribution](docs/AppStoreDistribution.md)",
+          "Sandboxed Finder workflow, distribution signing, installer package and verification"
+        ]
+      ]
+    },
+    {
+      "id": "b000032",
+      "kind": "blank",
+      "start_line": 51,
+      "end_line": 51,
+      "raw": "\n"
+    },
+    {
+      "id": "b000033",
+      "kind": "html",
+      "start_line": 52,
+      "end_line": 52,
+      "raw": "<a id=\"핵심-결정\"></a>\n"
+    },
+    {
+      "id": "b000034",
+      "kind": "blank",
+      "start_line": 53,
+      "end_line": 53,
+      "raw": "\n"
+    },
+    {
+      "id": "b000035",
+      "kind": "heading",
+      "start_line": 54,
+      "end_line": 54,
+      "raw": "## Core decision\n",
+      "level": 2,
+      "title": "Core decision"
+    },
+    {
+      "id": "b000036",
+      "kind": "blank",
+      "start_line": 55,
+      "end_line": 55,
+      "raw": "\n"
+    },
+    {
+      "id": "b000037",
+      "kind": "list",
+      "start_line": 56,
+      "end_line": 60,
+      "raw": "- The product is a macOS -specific Finder extension. It focuses on file creation, path copy, and destination copy/move.\n- First validate Finder Sync's suitability, exposure scope, and permission transfer. It does not guarantee behavior in all folders.\n- File creation, permission storage, AppKit   UI , and implement the Finder Sync extension as Swift   6 . No Qt dependencies are introduced.\n- Basic file operations work without accounts and servers. Paid features and pricing are business hypotheses to validate.\n- Create documents in the registered folder. 0.5.0 ends with Finder name editing. PSD · AI format is verified with Photoshop ·Illustrator. Path copy, file copy, and move are subsequent scopes.\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "The product is a macOS -specific Finder extension. It focuses on file creation, path copy, and destination copy/move.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "First validate Finder Sync's suitability, exposure scope, and permission transfer. It does not guarantee behavior in all folders.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "File creation, permission storage, AppKit   UI , and implement the Finder Sync extension as Swift   6 . No Qt dependencies are introduced.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Basic file operations work without accounts and servers. Paid features and pricing are business hypotheses to validate.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Create documents in the registered folder. 0.5.0 ends with Finder name editing. PSD · AI format is verified with Photoshop ·Illustrator. Path copy, file copy, and move are subsequent scopes.",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000038",
+      "kind": "blank",
+      "start_line": 61,
+      "end_line": 61,
+      "raw": "\n"
+    },
+    {
+      "id": "b000039",
+      "kind": "paragraph",
+      "start_line": 62,
+      "end_line": 62,
+      "raw": "Blueprint creation date: 2026-09-20. Swift transition date: 2026-09-25. Facts verified in technical documentation, product design hypotheses, and unverified items are distinguished in each document.\n"
+    },
+    {
+      "id": "b000040",
+      "kind": "blank",
+      "start_line": 63,
+      "end_line": 63,
+      "raw": "\n"
+    },
+    {
+      "id": "b000041",
+      "kind": "html",
+      "start_line": 64,
+      "end_line": 64,
+      "raw": "<!-- workspace-docs:readme:start -->\n"
+    },
+    {
+      "id": "b000042",
+      "kind": "heading",
+      "start_line": 65,
+      "end_line": 65,
+      "raw": "## Documentation entry points\n",
+      "level": 2,
+      "title": "Documentation entry points"
+    },
+    {
+      "id": "b000043",
+      "kind": "blank",
+      "start_line": 66,
+      "end_line": 66,
+      "raw": "\n"
+    },
+    {
+      "id": "b000044",
+      "kind": "list",
+      "start_line": 67,
+      "end_line": 70,
+      "raw": "- Human overview: this English `README.md`.\n- Agent instructions: [AGENT.md](AGENT.md).\n- Human documentation: [documentation index](docs/README.md).\n- Structured agent documentation: [agent index](docs/agent-index.json).\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "Human overview: this English `README.md`.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Agent instructions: [AGENT.md](AGENT.md).",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Human documentation: [documentation index](docs/README.md).",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Structured agent documentation: [agent index](docs/agent-index.json).",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000045",
+      "kind": "html",
+      "start_line": 71,
+      "end_line": 71,
+      "raw": "<!-- workspace-docs:readme:end -->\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000001",
+      "parent_id": null,
+      "level": 1,
+      "title": "Alright",
+      "anchor": "alright",
+      "start_line": 1
+    },
+    {
+      "block_id": "b000011",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Build and run",
+      "anchor": "build-and-run",
+      "start_line": 11
+    },
+    {
+      "block_id": "b000035",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Core decision",
+      "anchor": "core-decision",
+      "start_line": 54
+    },
+    {
+      "block_id": "b000042",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Documentation entry points",
+      "anchor": "documentation-entry-points",
+      "start_line": 65
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [
+      {
+        "block_id": "b000013",
+        "line": 13,
+        "text": "To provide macOS, Swift   6, Xcode, CMake   3.24 or higher, Ninja, Python   3, and a valid macOS code signing certificate are required. Python Standard libraries are used only to package and test Office documents during build. The deployed app creates files without Python ·Office· LibreOffice installation. Run from the project directory.",
+        "basis": "lexical_match",
+        "context": "paragraph"
+      },
+      {
+        "block_id": "b000025",
+        "line": 33,
+        "text": "3. In a direct distribution build, set the macOS accessibility permission required for automatic Finder name editing in `Enable Filename Editing…`. The App Store build does not request this permission.",
+        "basis": "lexical_match",
+        "context": "list"
+      },
+      {
+        "block_id": "b000029",
+        "line": 39,
+        "text": "The only app bundle is `build/bin/Alright.app` and the Finder extension is the internal `Contents/PlugIns/AlrightFinderSync.appex`. Direct distribution uses Developer ID signing and hardened runtime; the Finder extension maintains App Sandbox, while the host uses accessibility permissions for automatic Finder name editing. App Store distribution enables App Sandbox for both bundles and uses Finder selection with manual Return instead of Accessibility APIs. Its signed `.pkg` is created directly from the canonical app and saved in `build/appstore/`. Full disk access and Apple Events automation permissions are not required. Local direct builds omit timestamps and notarization. App Store upload and review are separate from local build, test, and package signature verification. Current behavior and constraints are specified in [document creation](docs/DocumentCreation.md) and [App Store distribution](docs/AppStoreDistribution.md).",
+        "basis": "lexical_match",
+        "context": "paragraph"
+      }
+    ],
+    "commands": [
+      {
+        "block_id": "b000015",
+        "language": "sh",
+        "code": "cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DALRIGHT_APP_STORE=OFF\ncmake --build build\nctest --test-dir build --output-on-failure\ncmake --build build --target AlrightRegisterExtension\nopen build/bin/Alright.app\n"
+      }
+    ],
+    "links": [
+      {
+        "block_id": "b000023",
+        "label": "App Store distribution",
+        "target": "docs/AppStoreDistribution.md",
+        "kind": "relative",
+        "line": 29
+      },
+      {
+        "block_id": "b000025",
+        "label": "document creation",
+        "target": "docs/DocumentCreation.md",
+        "kind": "relative",
+        "line": 35
+      },
+      {
+        "block_id": "b000029",
+        "label": "document creation",
+        "target": "docs/DocumentCreation.md",
+        "kind": "relative",
+        "line": 39
+      },
+      {
+        "block_id": "b000029",
+        "label": "App Store distribution",
+        "target": "docs/AppStoreDistribution.md",
+        "kind": "relative",
+        "line": 39
+      },
+      {
+        "block_id": "b000031",
+        "label": "Product and Technology Blueprint",
+        "target": "docs/BLUEPRINT.md",
+        "kind": "relative",
+        "line": 43
+      },
+      {
+        "block_id": "b000031",
+        "label": "Execution and Verification Plan",
+        "target": "docs/DELIVERY.md",
+        "kind": "relative",
+        "line": 44
+      },
+      {
+        "block_id": "b000031",
+        "label": "Finder New Text Implementation",
+        "target": "docs/FinderNewText.md",
+        "kind": "relative",
+        "line": 45
+      },
+      {
+        "block_id": "b000031",
+        "label": "Various Document Creation",
+        "target": "docs/DocumentCreation.md",
+        "kind": "relative",
+        "line": 46
+      },
+      {
+        "block_id": "b000031",
+        "label": "Create Office document",
+        "target": "docs/OfficeDocuments.md",
+        "kind": "relative",
+        "line": 47
+      },
+      {
+        "block_id": "b000031",
+        "label": "Hello World implementation",
+        "target": "docs/HelloWorld.md",
+        "kind": "relative",
+        "line": 48
+      },
+      {
+        "block_id": "b000031",
+        "label": "Single app build",
+        "target": "docs/SingleAppBuild.md",
+        "kind": "relative",
+        "line": 49
+      },
+      {
+        "block_id": "b000031",
+        "label": "App Store distribution",
+        "target": "docs/AppStoreDistribution.md",
+        "kind": "relative",
+        "line": 50
+      },
+      {
+        "block_id": "b000044",
+        "label": "AGENT.md",
+        "target": "AGENT.md",
+        "kind": "relative",
+        "line": 68
+      },
+      {
+        "block_id": "b000044",
+        "label": "documentation index",
+        "target": "docs/README.md",
+        "kind": "relative",
+        "line": 69
+      },
+      {
+        "block_id": "b000044",
+        "label": "agent index",
+        "target": "docs/agent-index.json",
+        "kind": "relative",
+        "line": 70
+      }
+    ],
+    "tables": [
+      {
+        "block_id": "b000031",
+        "columns": [
+          "Document",
+          "Content"
+        ],
+        "rows": [
+          [
+            "[Product and Technology Blueprint](docs/BLUEPRINT.md)",
+            "User, feature scope, right-click structure, native architecture, SDK utilization, monetization"
+          ],
+          [
+            "[Execution and Verification Plan](docs/DELIVERY.md)",
+            "Technical proof, implementation order, acceptance criteria, failure handling, release gate"
+          ],
+          [
+            "[Finder New Text Implementation](docs/FinderNewText.md)",
+            "Permission and extension structure, testing, actual Finder execution evidence"
+          ],
+          [
+            "[Various Document Creation](docs/DocumentCreation.md)",
+            "Alright submenu, 16 format, screen size, Finder name edit"
+          ],
+          [
+            "[Create Office document](docs/OfficeDocuments.md)",
+            "DOCX · XLSX · PPTX · ODT · ODS · ODP ,  XML  original and packaging/verification"
+          ],
+          [
+            "[Hello World implementation](docs/HelloWorld.md)",
+            "Past verification record of initial host app implementation"
+          ],
+          [
+            "[Single app build](docs/SingleAppBuild.md)",
+            "Output path, rebuild/sign rules"
+          ],
+          [
+            "[App Store distribution](docs/AppStoreDistribution.md)",
+            "Sandboxed Finder workflow, distribution signing, installer package and verification"
+          ]
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

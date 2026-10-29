@@ -1,0 +1,151 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:cd10e2d2419e8cf846a4a10fcd3ab14721f72b23b9909be4d46d0ec7591c1e7b",
+  "project": {
+    "id": "urn:iisacc:project:Product%2FUtility%2FAlright",
+    "name": "Alright",
+    "root": "Product/Utility/Alright",
+    "kind": "application"
+  },
+  "source": {
+    "path": "resources/AppIcon/README.md",
+    "sha256": "315e43300e6e63ce63542d7640492adc30b4bb729248b147d20b7263a7e42c1d",
+    "bytes": 2228,
+    "line_count": 13,
+    "encoding": "utf-8",
+    "language": "en"
+  },
+  "document": {
+    "title": "Alright app icon",
+    "role": "overview",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "heading",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "# Alright app icon\n",
+      "level": 1,
+      "title": "Alright app icon"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "paragraph",
+      "start_line": 3,
+      "end_line": 3,
+      "raw": "`Alright.ai` is the editable Adobe Illustrator master. `Alright.svg` is its portable vector export, and `Alright.png` is the 1024 × 1024 opaque RGB export used by the build. The blue background fills the entire square; it has no outer border, white margin, or pre-applied corner mask. The folded document and green add badge are editable paths and gradients, without embedded raster images or fonts.\n"
+    },
+    {
+      "id": "b000004",
+      "kind": "blank",
+      "start_line": 4,
+      "end_line": 4,
+      "raw": "\n"
+    },
+    {
+      "id": "b000005",
+      "kind": "paragraph",
+      "start_line": 5,
+      "end_line": 5,
+      "raw": "To update all three files, edit and save `Alright.ai` in Illustrator, then choose **File → Scripts → Other Script…** and select `tools/ExportAppIcon.jsx` from this repository. The script preserves the native AI master, refreshes the SVG and PNG, and leaves the AI document open. Only when the AI file does not yet exist does it import the SVG to create it. Other open Illustrator documents are left untouched.\n"
+    },
+    {
+      "id": "b000006",
+      "kind": "blank",
+      "start_line": 6,
+      "end_line": 6,
+      "raw": "\n"
+    },
+    {
+      "id": "b000007",
+      "kind": "paragraph",
+      "start_line": 7,
+      "end_line": 7,
+      "raw": "The script checks the 1024 × 1024 artboard and rejects embedded or linked raster artwork. Its export evidence is written to `build/icon-review/illustrator-export.json`. The original 2026-10-09 export used Adobe Illustrator 30.8.1, with 44 editable paths, zero raster items, and zero placed items.\n"
+    },
+    {
+      "id": "b000008",
+      "kind": "blank",
+      "start_line": 8,
+      "end_line": 8,
+      "raw": "\n"
+    },
+    {
+      "id": "b000009",
+      "kind": "paragraph",
+      "start_line": 9,
+      "end_line": 9,
+      "raw": "Run `cmake --build build` and `ctest --test-dir build --output-on-failure` after export. The build resamples `Alright.png` into all ten macOS iconset representations and embeds `Alright.icns` in the canonical `build/bin/Alright.app`. The bundle test checks dimensions, opacity, the unchanged 1024-pixel representation, ICNS contents, and the exact generated-to-bundled icon match. Rebuild `AlrightAppStorePackage` when refreshing an existing App Store installer package.\n"
+    },
+    {
+      "id": "b000010",
+      "kind": "blank",
+      "start_line": 10,
+      "end_line": 10,
+      "raw": "\n"
+    },
+    {
+      "id": "b000011",
+      "kind": "heading",
+      "start_line": 11,
+      "end_line": 11,
+      "raw": "## 2026-10-15 icon refresh\n",
+      "level": 2,
+      "title": "2026-10-15 icon refresh"
+    },
+    {
+      "id": "b000012",
+      "kind": "blank",
+      "start_line": 12,
+      "end_line": 12,
+      "raw": "\n"
+    },
+    {
+      "id": "b000013",
+      "kind": "paragraph",
+      "start_line": 13,
+      "end_line": 13,
+      "raw": "The current three masters are byte-for-byte copies of the user-selected `Glossy-Blue-File-Add.ai`, `.svg`, and `.png` in Workspace `build/app-icon-20261015/`. The 1024 × 1024 RGB PNG is opaque and fills the square without an outer border. The new Illustrator evidence records 88 editable paths, 13 gradient paths, no stroked paths, and no raster or placed items. Original icon files and working-tree changes are preserved in `build/verification/icon-submission-20261015/`; the source hashes are recorded there in `icon-sources.json`. Version 0.6.1 build 9 is the new submission candidate.\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000001",
+      "parent_id": null,
+      "level": 1,
+      "title": "Alright app icon",
+      "anchor": "alright-app-icon",
+      "start_line": 1
+    },
+    {
+      "block_id": "b000011",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "2026-10-15 icon refresh",
+      "anchor": "2026-10-15-icon-refresh",
+      "start_line": 11
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [],
+    "commands": [],
+    "links": [],
+    "tables": []
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}
