@@ -19,6 +19,7 @@ func rejects(_ message: String, _ body: () throws -> Void) throws {
         try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: root) }
         switch suite {
+        case "ResourceLayout": try testResourceLayout(root)
         case "NewText": try testNewText(root)
         case "Documents": try testDocuments(root, templates: URL(fileURLWithPath: CommandLine.arguments[3]))
         case "Requests": try testRequests(root)
@@ -27,6 +28,11 @@ func rejects(_ message: String, _ body: () throws -> Void) throws {
         default: throw AlrightError(message: "Unknown test suite")
         }
         print("PASS \(suite)")
+    }
+    static func testResourceLayout(_ root: URL) throws {
+        let components = root.standardizedFileURL.pathComponents
+        try check(components.contains("resources") && !components.contains("build"),
+                  "test fixtures must be under resources, outside build")
     }
     static func testNewText(_ root: URL) throws {
         let folder = root.appendingPathComponent("한글 ' $ ` test")

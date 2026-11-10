@@ -10,9 +10,9 @@
   },
   "source": {
     "path": "docs/SingleAppBuild.md",
-    "sha256": "75780b4e2e4a3584dd49873add7baa8181895c4d08a0ce8eed0fea5124d5ffc0",
-    "bytes": 5897,
-    "line_count": 23,
+    "sha256": "a38d6d0f7afd2b3f19d898861ecc3c79b604562b35463b63b8cb9faebc54e781",
+    "bytes": 6727,
+    "line_count": 38,
     "encoding": "utf-8",
     "language": "ko"
   },
@@ -184,6 +184,80 @@
       "start_line": 23,
       "end_line": 23,
       "raw": "공통 정책 변경 시 Workspace에서 `python3 -B Product/build-policy/sync.py`를 실행한다. 전체 감사는 `python3 -B Product/build-policy/audit.py --report Product/build-policy/build/audit.json`으로 수행한다.\n"
+    },
+    {
+      "id": "b000024",
+      "kind": "blank",
+      "start_line": 24,
+      "end_line": 24,
+      "raw": "\n"
+    },
+    {
+      "id": "b000025",
+      "kind": "paragraph",
+      "start_line": 25,
+      "end_line": 25,
+      "raw": "Tests place generated document fixtures under `resources/.state/test-fixtures/` and clean their temporary files. Provisioning profiles remain under `resources/.state/signing/`; historical release and review evidence is preserved under `resources/.recovery/build-history-20261030/`.\n"
+    },
+    {
+      "id": "b000026",
+      "kind": "blank",
+      "start_line": 26,
+      "end_line": 26,
+      "raw": "\n"
+    },
+    {
+      "id": "b000027",
+      "kind": "heading",
+      "start_line": 27,
+      "end_line": 27,
+      "raw": "## Clean deployment layout\n",
+      "level": 2,
+      "title": "Clean deployment layout"
+    },
+    {
+      "id": "b000028",
+      "kind": "blank",
+      "start_line": 28,
+      "end_line": 28,
+      "raw": "\n"
+    },
+    {
+      "id": "b000029",
+      "kind": "paragraph",
+      "start_line": 29,
+      "end_line": 33,
+      "raw": "macOS deployment prints its report to the build console by default and stores\nper-bundle locks under `resources/.state/deploy-locks/`. Framework copies retain\nruntime binaries and resources without SDK headers or module maps. The\n`tests/deploy_layout_test.py` contract checks these behaviors with disposable\nresources and does not launch the application.\n"
+    },
+    {
+      "id": "b000030",
+      "kind": "heading",
+      "start_line": 34,
+      "end_line": 34,
+      "raw": "## QML debug symbols\n",
+      "level": 2,
+      "title": "QML debug symbols"
+    },
+    {
+      "id": "b000031",
+      "kind": "blank",
+      "start_line": 35,
+      "end_line": 35,
+      "raw": "\n"
+    },
+    {
+      "id": "b000032",
+      "kind": "paragraph",
+      "start_line": 36,
+      "end_line": 37,
+      "raw": "Standard and compact macOS deployment keep QML `.dSYM` debug-symbol bundles\noutside the application while preserving the QML runtime files.\n"
+    },
+    {
+      "id": "b000033",
+      "kind": "blank",
+      "start_line": 38,
+      "end_line": 38,
+      "raw": "\n"
     }
   ],
   "outline": [
@@ -194,6 +268,22 @@
       "title": "단일 앱 빌드",
       "anchor": "단일-앱-빌드",
       "start_line": 1
+    },
+    {
+      "block_id": "b000027",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Clean deployment layout",
+      "anchor": "clean-deployment-layout",
+      "start_line": 27
+    },
+    {
+      "block_id": "b000030",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "QML debug symbols",
+      "anchor": "qml-debug-symbols",
+      "start_line": 34
     }
   ],
   "indexes": {

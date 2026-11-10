@@ -72,7 +72,7 @@ README의 CMake 빌드 후 `cmake --build build --target AlrightRegisterExtensio
 - 북마크를 재사용한 호스트 재시작 후 생성도 확인했다. 메뉴 등록·활성화만으로 성공을 판정하지 않았다.
 - 최종 메뉴 회귀 테스트 추가와 확장 재등록 뒤에도 호스트를 종료하고 실제 메뉴를 클릭했다. `New Text 3.txt`가 0바이트로 생성되어 TextEdit에서 열렸다.
 
-증거는 `build/verification/finder-new-text-menu.png`, `build/verification/new-text-opened.png`, `build/verification/new-text-final-opened.png`, `build/verification/new-text-runtime.json`, `build/Testing/Temporary/LastTest.log`에 보관한다. build 산출물은 Git에서 제외한다.
+증거는 `resources/.recovery/build-history-20261030/verification/finder-new-text-menu.png`, `resources/.recovery/build-history-20261030/verification/new-text-opened.png`, `resources/.recovery/build-history-20261030/verification/new-text-final-opened.png`, `resources/.recovery/build-history-20261030/verification/new-text-runtime.json`, `build/Testing/Temporary/LastTest.log`에 보관한다. build 산출물은 Git에서 제외한다.
 
 ## Swift 전환 후 실제 실행
 
@@ -85,7 +85,7 @@ Swift 호스트 0.3.0에서 기존 `/Users/ymy`, `/Volumes/Storage/Workspace` �
 - 두 번째 메뉴 클릭은 `New Text 2.txt`를 생성하고 열었다. 첫 파일은 0바이트와 inode `24242414`를 유지했다.
 - 코드 서명 검사와 CTest 5개가 모두 통과했다. 최소 타깃은 macOS 14.0이나 실제 실행 검증 환경은 macOS 27.0 arm64이다.
 
-Swift 증거: `build/verification/swift-host.png`, `swift-about-icon.png`, `swift-finder-menu.png`, `swift-text-opened.png`, `swift-second-text-opened.png`, `swift-runtime.json`. 테스트 로그는 `build/Testing/Temporary/LastTest.log`이다. 산출물은 Git에서 제외한다.
+Swift 증거: `resources/.recovery/build-history-20261030/verification/swift-host.png`, `swift-about-icon.png`, `swift-finder-menu.png`, `swift-text-opened.png`, `swift-second-text-opened.png`, `swift-runtime.json`. 테스트 로그는 `build/Testing/Temporary/LastTest.log`이다. 산출물은 Git에서 제외한다.
 
 ## 공식 API 근거
 

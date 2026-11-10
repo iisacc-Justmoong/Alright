@@ -38,4 +38,4 @@ AppLifecycle 테스트는 로그인한 macOS GUI 세션에서 실행하며 테�
 - 실제 `⌘Q` 입력 후 프로세스 종료 확인. 검증 후 앱을 다시 실행해 둠.
 - 별도 AppKit 자동 테스트에서 창 위치·크기 변경 후 닫기·재열기 보존 확인.
 
-재생성 가능한 로컬 증거: `build/verification/hello-world.png`, `build/verification/bundle-audit.json`, `build/Testing/Temporary/LastTest.log`. build 산출물은 Git에서 제외한다.
+재생성 가능한 로컬 증거: `resources/.recovery/build-history-20261030/verification/hello-world.png`, `resources/.recovery/build-history-20261030/verification/bundle-audit.json`, `build/Testing/Temporary/LastTest.log`. build 산출물은 Git에서 제외한다.

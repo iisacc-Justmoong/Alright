@@ -166,14 +166,14 @@ if(BUILD_TESTING)
     add_executable(AlrightTests ${ALRIGHT_SHARED} ${ALRIGHT_APP} src/finder_extension/FinderSync.swift tests/Tests.swift)
     target_compile_options(AlrightTests PRIVATE -parse-as-library -emit-module-path "${CMAKE_BINARY_DIR}/modules/AlrightTests.swiftmodule" -emit-module-dependencies-path "${CMAKE_BINARY_DIR}/CMakeFiles/AlrightTests.emit-module.d")
     target_link_libraries(AlrightTests PRIVATE "${APPKIT_FRAMEWORK}" "${FINDER_SYNC_FRAMEWORK}")
-    foreach(suite IN ITEMS NewText Documents Requests FinderMenu AppLifecycle)
-        add_test(NAME Alright.${suite} COMMAND AlrightTests ${suite} "${CMAKE_BINARY_DIR}/fixtures/swift-tests" "${CMAKE_BINARY_DIR}/bin/Alright.app/Contents/Resources/DocumentTemplates")
+    foreach(suite IN ITEMS ResourceLayout NewText Documents Requests FinderMenu AppLifecycle)
+        add_test(NAME Alright.${suite} COMMAND AlrightTests ${suite} "${CMAKE_SOURCE_DIR}/resources/.state/test-fixtures/swift-tests" "${CMAKE_BINARY_DIR}/bin/Alright.app/Contents/Resources/DocumentTemplates")
     endforeach()
     add_executable(AlrightDocumentFixture ${ALRIGHT_SHARED} tools/GenerateDocumentFixture.swift)
     target_compile_options(AlrightDocumentFixture PRIVATE -parse-as-library -emit-module-path "${CMAKE_BINARY_DIR}/modules/AlrightDocumentFixture.swiftmodule" -emit-module-dependencies-path "${CMAKE_BINARY_DIR}/CMakeFiles/AlrightDocumentFixture.emit-module.d")
     target_link_libraries(AlrightDocumentFixture PRIVATE "${APPKIT_FRAMEWORK}")
     add_test(NAME Alright.OfficePackages COMMAND "${Python3_EXECUTABLE}" -B
-        "${CMAKE_SOURCE_DIR}/tests/test_office_packages.py" "${CMAKE_BINARY_DIR}")
+        "${CMAKE_SOURCE_DIR}/tests/test_office_packages.py" "${CMAKE_BINARY_DIR}" "${CMAKE_SOURCE_DIR}/resources/.state/test-fixtures")
     add_test(NAME Alright.Bundle COMMAND "${Python3_EXECUTABLE}" -B
         "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_bundle.py" "${CMAKE_BINARY_DIR}")
     add_test(NAME Alright.AppStorePackaging COMMAND "${Python3_EXECUTABLE}" -B

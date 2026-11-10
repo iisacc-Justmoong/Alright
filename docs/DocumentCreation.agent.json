@@ -10,8 +10,8 @@
   },
   "source": {
     "path": "docs/DocumentCreation.md",
-    "sha256": "fc66902774f7babd85c06a72d6d6e3cb2e3f72a58254fe96e987240d66f7667b",
-    "bytes": 7653,
+    "sha256": "1d50404afd8b8be39a7ee8ab7e44f8f7c65394655a8ecfed061bcb6b38442b6c",
+    "bytes": 7764,
     "line_count": 69,
     "encoding": "utf-8",
     "language": "ko"
@@ -202,7 +202,7 @@
       "kind": "paragraph",
       "start_line": 30,
       "end_line": 30,
-      "raw": "SVG·Illustrator는 실제 지원되는 `point.topleft.down.to.point.bottomright.curvepath`를 사용한다. 존재하지 않는 `bezier.path`에 의한 Finder 기본 `+` 아이콘을 제거했다. FinderMenu 테스트는 그룹·16종 아이콘과 밝은 모드·어두운 모드·각 고대비 모드에서 TIFF 전달 후의 실제 픽셀 색상·비어 있지 않은 심볼을 검증한다. 실제 Finder 메뉴 확인 자료는 `build/verification/menu-icons/`에 보관한다.\n"
+      "raw": "SVG·Illustrator는 실제 지원되는 `point.topleft.down.to.point.bottomright.curvepath`를 사용한다. 존재하지 않는 `bezier.path`에 의한 Finder 기본 `+` 아이콘을 제거했다. FinderMenu 테스트는 그룹·16종 아이콘과 밝은 모드·어두운 모드·각 고대비 모드에서 TIFF 전달 후의 실제 픽셀 색상·비어 있지 않은 심볼을 검증한다. 실제 Finder 메뉴 확인 자료는 `resources/.recovery/build-history-20261030/verification/menu-icons/`에 보관한다.\n"
     },
     {
       "id": "b000014",
@@ -455,7 +455,7 @@
       "kind": "paragraph",
       "start_line": 69,
       "end_line": 69,
-      "raw": "CTest 7개는 TXT 충돌·동시 생성·경로 이탈, 16종 생성, Office ZIP·XML·관계·빈 문서 구조, PSD ImageIO 디코딩, AI PDF/native 크기 일치, 5120×2880·1513×983·1080×1920·1×1 생성과 잘못된 크기 거부, 요청 프로토콜, 메뉴 전달, 앱 수명주기, 단일 앱·서명을 검증한다. `build/verification/rename/status.json`에 이름 편집의 실제 검증 상태를, `build/verification/office/`에 Office 검증 기록을 보관한다. 접근성 권한이 꺼진 현재 개발 컴퓨터에서 이름 편집의 실기기 검증은 미완료이다.\n"
+      "raw": "CTest 7개는 TXT 충돌·동시 생성·경로 이탈, 16종 생성, Office ZIP·XML·관계·빈 문서 구조, PSD ImageIO 디코딩, AI PDF/native 크기 일치, 5120×2880·1513×983·1080×1920·1×1 생성과 잘못된 크기 거부, 요청 프로토콜, 메뉴 전달, 앱 수명주기, 단일 앱·서명을 검증한다. `resources/.recovery/build-history-20261030/verification/rename/status.json`에 이름 편집의 실제 검증 상태를, `resources/.recovery/build-history-20261030/verification/office/`에 Office 검증 기록을 보관한다. 접근성 권한이 꺼진 현재 개발 컴퓨터에서 이름 편집의 실기기 검증은 미완료이다.\n"
     }
   ],
   "outline": [

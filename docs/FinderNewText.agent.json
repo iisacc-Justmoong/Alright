@@ -10,8 +10,8 @@
   },
   "source": {
     "path": "docs/FinderNewText.md",
-    "sha256": "93ba14e1eca68f2efd41e92bd7a719e6ff179cdaeb796a64a412d854092c72ac",
-    "bytes": 10546,
+    "sha256": "86defa356668d2393ece80cee0b53cd676de9b59b0bf3507fa373e76b5942d8a",
+    "bytes": 10731,
     "line_count": 94,
     "encoding": "utf-8",
     "language": "ko"
@@ -527,7 +527,7 @@
       "kind": "paragraph",
       "start_line": 75,
       "end_line": 75,
-      "raw": "증거는 `build/verification/finder-new-text-menu.png`, `build/verification/new-text-opened.png`, `build/verification/new-text-final-opened.png`, `build/verification/new-text-runtime.json`, `build/Testing/Temporary/LastTest.log`에 보관한다. build 산출물은 Git에서 제외한다.\n"
+      "raw": "증거는 `resources/.recovery/build-history-20261030/verification/finder-new-text-menu.png`, `resources/.recovery/build-history-20261030/verification/new-text-opened.png`, `resources/.recovery/build-history-20261030/verification/new-text-final-opened.png`, `resources/.recovery/build-history-20261030/verification/new-text-runtime.json`, `build/Testing/Temporary/LastTest.log`에 보관한다. build 산출물은 Git에서 제외한다.\n"
     },
     {
       "id": "b000056",
@@ -621,7 +621,7 @@
       "kind": "paragraph",
       "start_line": 88,
       "end_line": 88,
-      "raw": "Swift 증거: `build/verification/swift-host.png`, `swift-about-icon.png`, `swift-finder-menu.png`, `swift-text-opened.png`, `swift-second-text-opened.png`, `swift-runtime.json`. 테스트 로그는 `build/Testing/Temporary/LastTest.log`이다. 산출물은 Git에서 제외한다.\n"
+      "raw": "Swift 증거: `resources/.recovery/build-history-20261030/verification/swift-host.png`, `swift-about-icon.png`, `swift-finder-menu.png`, `swift-text-opened.png`, `swift-second-text-opened.png`, `swift-runtime.json`. 테스트 로그는 `build/Testing/Temporary/LastTest.log`이다. 산출물은 Git에서 제외한다.\n"
     },
     {
       "id": "b000066",

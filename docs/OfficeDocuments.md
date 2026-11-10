@@ -34,4 +34,4 @@ ctest --test-dir build --output-on-failure
 - 실제 Finder의 Alright 하위 메뉴에서 16종 항목과 SF Symbol을 확인했다. `finder-menu.txt`, `finder-menu.png`, `runtime.json`에 증거를 남겼다.
 - Finder의 파일명 편집은 앞서 구현한 접근성 권한이 필요하다. 해당 권한은 현재 개발 컴퓨터에서 꺼져 있으므로 전체 우클릭→생성→이름 편집의 실제 검증은 대기 상태이다. 새 형식의 생성·파일 구조 검증과 구분한다.
 
-증거 디렉터리: `build/verification/office/`. Windows Office와 LibreOffice에서의 직접 실행은 이번 검증 범위에 포함하지 않는다.
+증거 디렉터리: `resources/.recovery/build-history-20261030/verification/office/`. Windows Office와 LibreOffice에서의 직접 실행은 이번 검증 범위에 포함하지 않는다.

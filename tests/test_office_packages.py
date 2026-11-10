@@ -9,6 +9,7 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_STORED
 
 BUILD = Path(sys.argv.pop(1)).resolve()
+TEST_ROOT = Path(sys.argv.pop(1)).resolve()
 FORMATS = {'word': 'docx', 'excel': 'xlsx', 'powerpoint': 'pptx',
            'openDocumentText': 'odt', 'openDocumentSpreadsheet': 'ods', 'openDocumentPresentation': 'odp'}
 NS = dict(w='http://schemas.openxmlformats.org/wordprocessingml/2006/main',
@@ -23,8 +24,8 @@ NS = dict(w='http://schemas.openxmlformats.org/wordprocessingml/2006/main',
 
 class OfficePackages(unittest.TestCase):
     def test_created_office_documents(self):
-        fixture_root = BUILD / 'fixtures'
-        fixture_root.mkdir(exist_ok=True)
+        fixture_root = TEST_ROOT
+        fixture_root.mkdir(parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(dir=fixture_root) as tmp:
             for kind, extension in FORMATS.items():
                 with self.subTest(extension=extension):

@@ -27,7 +27,7 @@
 
 Alright 그룹과 문서 16종은 SF Symbols를 사용한다. 메뉴가 요청될 때 현재 모양의 `NSColor.labelColor`로 단색 이미지를 만들고 템플릿 속성도 유지한다. macOS 27의 Finder에서 원본 SF Symbol과 `isTemplate`만 전달하면 검은색으로 표시되므로, 프로세스 간 전달 과정에서 템플릿 정보가 적용되지 않아도 글자 계열 색상이 유지되도록 픽셀에 반영한다. 색상을 고정된 흰색으로 지정하거나 이전 메뉴의 이미지를 캐시하지 않는다. Finder가 템플릿을 적용하지 않는 경우 선택 강조 시에도 메뉴를 열 때 계산한 아이콘 색상이 유지된다.
 
-SVG·Illustrator는 실제 지원되는 `point.topleft.down.to.point.bottomright.curvepath`를 사용한다. 존재하지 않는 `bezier.path`에 의한 Finder 기본 `+` 아이콘을 제거했다. FinderMenu 테스트는 그룹·16종 아이콘과 밝은 모드·어두운 모드·각 고대비 모드에서 TIFF 전달 후의 실제 픽셀 색상·비어 있지 않은 심볼을 검증한다. 실제 Finder 메뉴 확인 자료는 `build/verification/menu-icons/`에 보관한다.
+SVG·Illustrator는 실제 지원되는 `point.topleft.down.to.point.bottomright.curvepath`를 사용한다. 존재하지 않는 `bezier.path`에 의한 Finder 기본 `+` 아이콘을 제거했다. FinderMenu 테스트는 그룹·16종 아이콘과 밝은 모드·어두운 모드·각 고대비 모드에서 TIFF 전달 후의 실제 픽셀 색상·비어 있지 않은 심볼을 검증한다. 실제 Finder 메뉴 확인 자료는 `resources/.recovery/build-history-20261030/verification/menu-icons/`에 보관한다.
 
 ## 화면 크기
 
@@ -66,4 +66,4 @@ Finder 이름 편집에는 macOS 접근성(최신 OS의 Device Control and Data 
 
 ## 검증
 
-CTest 7개는 TXT 충돌·동시 생성·경로 이탈, 16종 생성, Office ZIP·XML·관계·빈 문서 구조, PSD ImageIO 디코딩, AI PDF/native 크기 일치, 5120×2880·1513×983·1080×1920·1×1 생성과 잘못된 크기 거부, 요청 프로토콜, 메뉴 전달, 앱 수명주기, 단일 앱·서명을 검증한다. `build/verification/rename/status.json`에 이름 편집의 실제 검증 상태를, `build/verification/office/`에 Office 검증 기록을 보관한다. 접근성 권한이 꺼진 현재 개발 컴퓨터에서 이름 편집의 실기기 검증은 미완료이다.
+CTest 7개는 TXT 충돌·동시 생성·경로 이탈, 16종 생성, Office ZIP·XML·관계·빈 문서 구조, PSD ImageIO 디코딩, AI PDF/native 크기 일치, 5120×2880·1513×983·1080×1920·1×1 생성과 잘못된 크기 거부, 요청 프로토콜, 메뉴 전달, 앱 수명주기, 단일 앱·서명을 검증한다. `resources/.recovery/build-history-20261030/verification/rename/status.json`에 이름 편집의 실제 검증 상태를, `resources/.recovery/build-history-20261030/verification/office/`에 Office 검증 기록을 보관한다. 접근성 권한이 꺼진 현재 개발 컴퓨터에서 이름 편집의 실기기 검증은 미완료이다.

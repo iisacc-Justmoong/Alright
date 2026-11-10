@@ -1,6 +1,7 @@
 """Deploy and sign one application in place, including plain helper executables."""
 import argparse
 from contextlib import contextmanager
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -195,7 +196,7 @@ def deploy_qml_modules(destination, modules, compact=False, quick_style=None, em
 
         def ignore(directory, names):
             if not compact:
-                return []
+                return [name for name in names if name.endswith(".dSYM")]
             directory = Path(directory)
             skipped = []
             for name in names:
@@ -322,6 +323,14 @@ def containing_app(binary):
     return next(parent for parent in binary.parents if (parent / "Contents/Info.plist").is_file())
 
 
+def framework_runtime_ignore(directory, names):
+    """Omit SDK-only framework directories while retaining runtime resources."""
+    path = Path(directory)
+    if path.name.endswith(".framework") or path.parent.name == "Versions":
+        return set(names) & {"Headers", "PrivateHeaders", "Modules"}
+    return set()
+
+
 def complete_frameworks(app, qt):
     """Complete plugin-only Qt dependencies without redeploying the app per plugin."""
     queue = list(binaries(app))
@@ -340,7 +349,8 @@ def complete_frameworks(app, qt):
                 source = qt / "lib" / framework
                 if not (source / relative).is_file():
                     raise RuntimeError(f"Missing Qt framework: {link}")
-                shutil.copytree(source, target, symlinks=True, dirs_exist_ok=True)
+                shutil.copytree(source, target, symlinks=True, dirs_exist_ok=True,
+                                ignore=framework_runtime_ignore)
             queue.append((target / relative).resolve())
 
 
@@ -410,11 +420,21 @@ def sign(app, identity, entitlements):
 
 
 @contextmanager
-def deployment_lock(app):
-    """Serialize bundle writers using a persistent lock outside the bundle."""
+def deployment_lock(app, lock_dir=None):
+    """Serialize bundle writers with a persistent project-resource lock."""
     import fcntl
     app = app.resolve()
-    lock_path = app.parent / f".{app.name}.deploy.lock"
+    if lock_dir is None:
+        build_dir = next((parent for parent in app.parents if parent.name == "build"), None)
+        script_dir = Path(__file__).resolve().parent
+        if script_dir.name == "single-app" and script_dir.parent.name == "cmake":
+            script_dir = script_dir.parent.parent
+        lock_dir = (build_dir.parent if build_dir else script_dir) / "resources/.state/deploy-locks"
+    else:
+        lock_dir = Path(lock_dir)
+    lock_dir.mkdir(parents=True, exist_ok=True)
+    digest = hashlib.sha256(os.fsencode(app)).hexdigest()
+    lock_path = lock_dir / f"{digest}.lock"
     with lock_path.open("a") as lock:
         fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
         try:
@@ -424,8 +444,17 @@ def deployment_lock(app):
 
 
 def deploy(args):
-    with deployment_lock(args.app) as app:
+    with deployment_lock(args.app, getattr(args, "lock_dir", None)) as app:
         _deploy_locked(args, app)
+
+
+def emit_report(report, path=None):
+    output = json.dumps(report, indent=2) + "\n"
+    if path is None:
+        print(output, end="")
+    else:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(output)
 
 
 def _deploy_locked(args, app):
@@ -435,7 +464,6 @@ def _deploy_locked(args, app):
                if path.is_file() and path.name != app.stem]
     qt = args.macdeployqt.resolve().parent.parent
     search = args.search_path + [app / "Contents/Frameworks"]
-    args.log.parent.mkdir(parents=True, exist_ok=True)
     runtime_plugins = getattr(args, "runtime_plugin", [])
     sources = prepare_native(app, args.library, search, runtime_plugins=runtime_plugins)
     for helper in helpers:
@@ -488,7 +516,7 @@ def _deploy_locked(args, app):
     if list(app.rglob("*.app")):
         raise RuntimeError("Nested .app bundles violate the single application output contract")
     sign(app, args.identity, args.entitlements)
-    args.log.write_text(json.dumps(report, indent=2) + "\n")
+    emit_report(report, args.log)
 
 
 if __name__ == "__main__":
@@ -508,5 +536,6 @@ if __name__ == "__main__":
     parser.add_argument("--configuration", default="", help="Release/MinSizeRel enable symbol stripping with --compact")
     parser.add_argument("--embedded-resources-module", action="append", default=[],
                         help="Module whose fonts/images/icons are already embedded; retain filesystem licenses")
-    parser.add_argument("--log", type=Path, required=True)
+    parser.add_argument("--log", type=Path, help="Optional explicit report path; defaults to console output")
+    parser.add_argument("--lock-dir", type=Path, help="Persistent deployment lock directory")
     deploy(parser.parse_args())

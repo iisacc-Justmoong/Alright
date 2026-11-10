@@ -10,8 +10,8 @@
   },
   "source": {
     "path": "docs/OfficeDocuments.md",
-    "sha256": "bda6ffc3d7856fbd9400b66debf09ccc21d8fa330fff78ed0c2251a753b90ab2",
-    "bytes": 3686,
+    "sha256": "3af09aa4499853d8a1e841a6e5c8313aa4cc50e20613c519139a6e468cc52d66",
+    "bytes": 3723,
     "line_count": 37,
     "encoding": "utf-8",
     "language": "ko"
@@ -245,7 +245,7 @@
       "kind": "paragraph",
       "start_line": 37,
       "end_line": 37,
-      "raw": "증거 디렉터리: `build/verification/office/`. Windows Office와 LibreOffice에서의 직접 실행은 이번 검증 범위에 포함하지 않는다.\n"
+      "raw": "증거 디렉터리: `resources/.recovery/build-history-20261030/verification/office/`. Windows Office와 LibreOffice에서의 직접 실행은 이번 검증 범위에 포함하지 않는다.\n"
     }
   ],
   "outline": [
@@ -293,7 +293,7 @@
       {
         "block_id": "b000021",
         "line": 37,
-        "text": "증거 디렉터리: `build/verification/office/`. Windows Office와 LibreOffice에서의 직접 실행은 이번 검증 범위에 포함하지 않는다.",
+        "text": "증거 디렉터리: `resources/.recovery/build-history-20261030/verification/office/`. Windows Office와 LibreOffice에서의 직접 실행은 이번 검증 범위에 포함하지 않는다.",
         "basis": "lexical_match",
         "context": "paragraph"
       }

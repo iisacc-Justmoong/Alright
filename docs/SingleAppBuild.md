@@ -21,3 +21,18 @@ Finder 사이드바 아이콘은 호스트의 `resources/Info.plist.in`에서 `C
 도구와 테스트는 일반 실행 파일이다. Swift 모듈은 `build/modules/`, 디버그 심볼은 `build/symbols/`, 컴파일 의존성 파일은 `build/CMakeFiles/`에 둔다. Swift 드라이버가 Release 링크 시 번들의 `Contents/MacOS/`에 생성하는 `Alright.d`와 `AlrightFinderSync.d`도 서명 전에 `build/CMakeFiles/*swift-link.d`로 이동한다. 실행 파일 디렉터리에 `.d`나 `.dSYM`이 남으면 `Alright.Bundle`이 실패한다.
 
 공통 정책 변경 시 Workspace에서 `python3 -B Product/build-policy/sync.py`를 실행한다. 전체 감사는 `python3 -B Product/build-policy/audit.py --report Product/build-policy/build/audit.json`으로 수행한다.
+
+Tests place generated document fixtures under `resources/.state/test-fixtures/` and clean their temporary files. Provisioning profiles remain under `resources/.state/signing/`; historical release and review evidence is preserved under `resources/.recovery/build-history-20261030/`.
+
+## Clean deployment layout
+
+macOS deployment prints its report to the build console by default and stores
+per-bundle locks under `resources/.state/deploy-locks/`. Framework copies retain
+runtime binaries and resources without SDK headers or module maps. The
+`tests/deploy_layout_test.py` contract checks these behaviors with disposable
+resources and does not launch the application.
+## QML debug symbols
+
+Standard and compact macOS deployment keep QML `.dSYM` debug-symbol bundles
+outside the application while preserving the QML runtime files.
+
